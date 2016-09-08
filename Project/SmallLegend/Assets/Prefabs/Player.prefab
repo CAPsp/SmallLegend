@@ -151,7 +151,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &114000010497495104
 MonoBehaviour:
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed_: 6
   playerRayTransform_: {fileID: 4000013006986152}
-  rayRange_: 1.5
+  rayRange_: 1.1
 --- !u!136 &136000012188900512
 CapsuleCollider:
   m_ObjectHideFlags: 1
