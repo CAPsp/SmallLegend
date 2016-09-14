@@ -1,7 +1,11 @@
 ﻿using UnityEngine;using System.Collections;public class Anchor : MonoBehaviour {
     Rigidbody rigidbody_;
+    PlayerAnchor playerAnchor_;
 
     void Awake() {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerAnchor_ = player.GetComponent<PlayerAnchor>();
+
         rigidbody_ = GetComponent<Rigidbody>();
     }
 
@@ -14,8 +18,8 @@
 
             case "Environment":
             case "Enemy":
-                Debug.Log("Collide");
                 rigidbody_.velocity = Vector3.zero;
+                playerAnchor_.SetAnchorInfo(other.transform);
                 break;
 
         }
