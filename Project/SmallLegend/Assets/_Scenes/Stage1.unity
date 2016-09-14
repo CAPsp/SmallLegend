@@ -482,6 +482,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &722162725 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013267409342, guid: 2ae38c03fe4237f4f94e256e366749d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 80839677}
+--- !u!114 &722162726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 722162725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a28f1f042efa046801fd7345018360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabAnchor_: {fileID: 1000012464642382, guid: 6399df0806bb9244fa167a75963317d4,
+    type: 2}
+  targetPoint_: {fileID: 1952275106}
+  firePoint_: {fileID: 1096245957}
+  moveVelocity_: 50
 --- !u!1 &749245463
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +888,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0060abd05800c4fb2c40ba9c5a64c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1096245957 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013596132302, guid: 2ae38c03fe4237f4f94e256e366749d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 80839677}
 --- !u!1 &1132592279
 GameObject:
   m_ObjectHideFlags: 0

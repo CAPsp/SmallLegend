@@ -44,8 +44,6 @@ public class PlayerAttack : MonoBehaviour {
 		Vector3 shotAngle = targetPoint_.position - firePoint_.position;
 		shotAngle = shotAngle.normalized;
 
-		Debug.Log (shotAngle);
-
 		// プレイヤーと被らない位置に弾を生成
 		GameObject ammo = Instantiate (prefabAmmo_, firePoint_.position, Quaternion.identity) as GameObject;
 		ammo.transform.position += shotAngle * ammo.transform.localScale.x;
