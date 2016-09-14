@@ -25,24 +25,15 @@ public class PlayerAttack : MonoBehaviour {
 
         // 押し続けている間、力を貯める
 		if (Input.GetButton ("Fire1")) {
-
-			DebugString.ReplaceText ("Charge");
-
-			velocity_ += velocityUpPerTime_ * Time.deltaTime;
+            velocity_ += velocityUpPerTime_ * Time.deltaTime;
 			if (velocity_ >= maxVelocity_) {
 				velocity_ = maxVelocity_;
 			}
 
 		}
 		else if (velocity_ > minVelocity_) {
-
-			DebugString.ReplaceText ("Shot");
-
-			Shot ();
+            Shot ();
 			velocity_ = minVelocity_;
-		}
-		else {
-			DebugString.ReplaceText ("None");
 		}
 
 	}
