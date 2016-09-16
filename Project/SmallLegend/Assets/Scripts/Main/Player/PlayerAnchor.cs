@@ -1,7 +1,33 @@
-﻿using UnityEngine;using System.Collections;public class PlayerAnchor : MonoBehaviour {    public GameObject prefabAnchor_;    // アンカーとなるprefab    public Transform targetPoint_;      // 狙うポイント    public Transform firePoint_;        // 生成ポイント    public float moveVelocity_ = 50f;    //LineRenderer anchorLine_;    GameObject currentAnchor_ = null;    Transform anchorPoint_ = null;    void Awake() {      //  anchorLine_ = GetComponent<LineRenderer>();    }	// Update is called once per frame	void Update () {        // 右クリックでアンカーをfirePoint_　めがけて射出        if (currentAnchor_ == null && Input.GetButton("Fire2")) {            Shot();        }        // アンカーが刺さったらそのポイントに移動        if(anchorPoint_ != null) {
+﻿using UnityEngine;using System.Collections;public class PlayerAnchor : MonoBehaviour {    public GameObject prefabAnchor_;    // アンカーとなるprefab    public Transform targetPoint_;      // 狙うポイント    public Transform firePoint_;        // 生成ポイント    public float moveVelocity_      = 50f;    public float invalidDistance_   = 3f;   // アンカー移動が無効になるプレイヤーとアンカーの位置    //LineRenderer anchorLine_;    GameObject currentAnchor_   = null;    Transform anchorPoint_      = null;    bool isMoving_              = false;    Rigidbody playerRigidbody_;    PlayerMovement playerMovement_;    Collider playerCollider_;        void Awake() {        playerMovement_     = GetComponent<PlayerMovement>();        playerRigidbody_    = GetComponent<Rigidbody>();        playerCollider_     = GetComponent<Collider>();      //  anchorLine_ = GetComponent<LineRenderer>();    }	// Update is called once per frame	void Update () {        // 右クリックでアンカーをfirePoint_　めがけて射出        if (currentAnchor_ == null && Input.GetButton("Fire2")) {            Shot();        }        // アンカーで移動中        if (isMoving_) {
+            Moving();                       }        // アンカーが刺さったらそのポイントに移動        else if (anchorPoint_ != null) {
 
-            Destroy(currentAnchor_);
-            anchorPoint_ = null;
-        }	}    void Shot() {        // 正規化した発射角度を割り出す        Vector3 shotAngle = targetPoint_.position - firePoint_.position;        shotAngle = shotAngle.normalized;        // プレイヤーと被らない市にアンカー生成        currentAnchor_ = Instantiate(prefabAnchor_, firePoint_.position, Quaternion.identity) as GameObject;        currentAnchor_.transform.position += shotAngle * currentAnchor_.transform.localScale.x;        // 等速直線運動        currentAnchor_.GetComponent<Rigidbody>().velocity = shotAngle * moveVelocity_;    }    public void SetAnchorInfo(Transform point) {
-        anchorPoint_ = point;
-    }}
+            // アンカーで移動できるか判断
+            if (CheckValidAnchor()) {
+                isMoving_ = true;
+                playerMovement_.enabled = false;    // アンカー移動中は通常の移動処理を無効に
+            }            else {
+                Destroy(currentAnchor_);
+                anchorPoint_ = null;
+            }        }	}    // アンカー移動中にオブジェクトとぶつかったら移動処理終了    void OnCollisionEnter(Collision other) {        if (isMoving_) {            isMoving_ = false;            Destroy(currentAnchor_);            anchorPoint_ = null;            playerMovement_.enabled = true;        }    }    void Shot() {        // 正規化した発射角度を割り出す        Vector3 shotAngle = targetPoint_.position - firePoint_.position;        shotAngle = shotAngle.normalized;        // プレイヤーと被らない位置にアンカー生成        currentAnchor_ = Instantiate(prefabAnchor_, firePoint_.position, Quaternion.identity) as GameObject;        currentAnchor_.transform.position += shotAngle * currentAnchor_.transform.localScale.x;        // 等速直線運動        currentAnchor_.GetComponent<Rigidbody>().velocity = shotAngle * moveVelocity_;    }    void Moving() {
+
+        // 角度を計算、正規化
+        Vector3 basePoint = playerCollider_.transform.position - new Vector3(0f, playerCollider_.bounds.extents.y, 0f);
+        Vector3 angle = anchorPoint_.position - basePoint;
+        angle.Normalize();
+
+        playerRigidbody_.transform.position += angle * (moveVelocity_ * Time.deltaTime);   // 移動速度はアンカーと同じ    }
+
+    bool CheckValidAnchor() {
+
+        // アンカーとプレイヤーの位置が近すぎる場合無効
+        float distance = Vector3.Distance(anchorPoint_.position, playerCollider_.transform.position);
+        if (distance <= invalidDistance_) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+    // Anchorクラスから刺さった地点の情報が通知されるメソッド
+    public void SetAnchorInfo(Transform point) {        anchorPoint_ = point;    }}

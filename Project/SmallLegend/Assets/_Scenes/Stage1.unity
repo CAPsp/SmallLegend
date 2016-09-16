@@ -139,11 +139,6 @@ Prefab:
       propertyPath: targetPoint_
       value: 
       objectReference: {fileID: 1952275106}
-    - target: {fileID: 114000010497495104, guid: 2ae38c03fe4237f4f94e256e366749d3,
-        type: 2}
-      propertyPath: rayRange_
-      value: 0.6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
   m_IsPrefabParent: 0
