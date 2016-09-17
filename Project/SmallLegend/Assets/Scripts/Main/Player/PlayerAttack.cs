@@ -13,16 +13,28 @@ public class PlayerAttack : MonoBehaviour {
     public float maxVelocity_           = 1000f;
     public float minVelocity_           = 50f;
 
+    Weapon currentWeapon_;
     float velocity_;
 
 	// Use this for initialization
 	void Start () {
+        currentWeapon_ = new Bow();
         velocity_ = minVelocity_;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        if (currentWeapon_.EffectPerUpdate(Input.GetButton("Fire1"))) {
+
+            // 正規化した発射角度を割り出す
+            Vector3 shotAngle = targetPoint_.position - firePoint_.position;
+            shotAngle = shotAngle.normalized;
+
+            currentWeapon_.Attack(shotAngle);
+        }
+
+        /*
         // 押し続けている間、力を貯める
 		if (Input.GetButton ("Fire1")) {
             velocity_ += velocityUpPerTime_ * Time.deltaTime;
@@ -35,6 +47,7 @@ public class PlayerAttack : MonoBehaviour {
             Shot ();
 			velocity_ = minVelocity_;
 		}
+        */
 
 	}
 
