@@ -8,7 +8,11 @@ public class EnemyHelth : MonoBehaviour {
     void OnCollisionEnter(Collision other) {
 
         if (other.gameObject.tag == "Ammo") {
-            helth_ -= 10;
+
+			Arrow arrow = other.gameObject.GetComponent<Arrow> ();
+			int damage = (arrow != null) ? arrow.damage : 10;
+
+            helth_ -= damage;
             Destroy(other.gameObject);
 
             Debug.Log("Helth : " + helth_);
