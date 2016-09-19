@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyHelth : MonoBehaviour {
+public class EnemyHealth : MonoBehaviour {
 
-    public int helth_;
+    public int health_;
 
     void OnCollisionEnter(Collision other) {
 
@@ -12,17 +12,17 @@ public class EnemyHelth : MonoBehaviour {
 			Arrow arrow = other.gameObject.GetComponent<Arrow> ();
 			int damage = (arrow != null) ? arrow.damage : 10;
 
-            helth_ -= damage;
+            health_ -= damage;
             Destroy(other.gameObject);
 
-            Debug.Log("Helth : " + helth_);
+            Debug.Log("Health : " + health_);
         }
 
     }
 
     void Update() {
 
-        if(helth_ <= 0) {
+        if(health_ <= 0) {
             Destroy(gameObject);
         }
 

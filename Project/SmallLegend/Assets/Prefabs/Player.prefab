@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nonDamageTime_: 1
+  heartUI_: {fileID: 0}
 --- !u!135 &135000010317029254
 SphereCollider:
   m_ObjectHideFlags: 1

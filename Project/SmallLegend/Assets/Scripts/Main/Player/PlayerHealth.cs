@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHelth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour {
 
-	public float nonDamageTime_ = 1f;
+	public float nonDamageTime_ 	= 1f;
+	public static int maxHealth_	= 5;
+	public Heart heartUI_;
 
-	int helth_ = 5;
+	int health_;
 	float timer_;
 
 	void Awake(){
-		timer_ = nonDamageTime_;
+		health_ = maxHealth_;
+		timer_ 	= nonDamageTime_;
 	}
 
 	void Update(){
@@ -28,9 +31,10 @@ public class PlayerHelth : MonoBehaviour {
 			return;
 		}
 
-		helth_--;
+		health_--;
 
-		Debug.Log (helth_);
+		// UIに現在のHPを通知
+		heartUI_.ChangeActiveHearts(health_);
 
 	}
 
