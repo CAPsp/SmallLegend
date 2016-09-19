@@ -134,35 +134,14 @@ Prefab:
       propertyPath: targetPoint_
       value: 
       objectReference: {fileID: 1952275106}
+    - target: {fileID: 114000013294343192, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: targetPoint_
+      value: 
+      objectReference: {fileID: 1952275106}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &80839678 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010586636786, guid: 2ae38c03fe4237f4f94e256e366749d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 80839677}
---- !u!114 &80839679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 80839678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1093fab24ae82bd4aa77da6af2e6ff31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabArrow_: {fileID: 1000011106447278, guid: c965dc91d5d504cfeb4076f65491dec0,
-    type: 2}
-  targetPoint_: {fileID: 1952275106}
-  idleTime_: 0.2
-  velocityUpPerSecond_: 100
-  maxVelocity_: 200
-  minVelocity_: 25
-  damegeUpPerSecond_: 50
-  maxDamage_: 100
-  minDamage_: 20
 --- !u!1001 &172186791
 Prefab:
   m_ObjectHideFlags: 0
