@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour {
 	void OnCollisionEnter(Collision other) {
 
 		if (other.gameObject == player_) {
-			playerHealth_.TakeDamage ();
+			playerHealth_.TakeDamage (1);
 
 			// プレイヤーと逆方向に吹っ飛ぶ
 			Vector3 angle = transform.position - other.transform.position;

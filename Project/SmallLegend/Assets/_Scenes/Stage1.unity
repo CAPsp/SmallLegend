@@ -924,6 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0060abd05800c4fb2c40ba9c5a64c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth_: {fileID: 1469331055}
 --- !u!1 &1132592279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1282,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424170635}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1469331055 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013735627368, guid: 2ae38c03fe4237f4f94e256e366749d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 80839677}
+  m_Script: {fileID: 11500000, guid: 2fa40783c690e48b5bb0910a9ec6b219, type: 3}
 --- !u!1 &1549009752
 GameObject:
   m_ObjectHideFlags: 0
