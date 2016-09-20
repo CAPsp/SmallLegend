@@ -1,60 +1,72 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Bow : MonoBehaviour {
 
 	public GameObject prefabArrow_;
 	public Transform targetPoint_;
-	public float idleTime_				= 0.2f;
+	public float idleTime_				= 0.5f;
+	public Image chargeCircleImage_;
     
-	public float velocityUpPerSecond_   = 100f;
+	public float chargeEndTimeAmount_	= 2f;
     public float maxVelocity_           = 200f;
-    public float minVelocity_           = 25f;
-
-    public int damegeUpPerSecond_       = 50;
+    public float minVelocity_           = 20f;
     public int maxDamage_               = 100;
     public int minDamage_               = 20;
 
     float velocity_;
 	int damage_;
-	float timer_;
+	float idleTimer_	= 0f;
+	float chargeTimer_	= 0f;
+
+	Vector2 initCircleSize_;	// 初期のチャージを表す円の座標
 	AudioSource seConcentrate_;
 
 	void Awake(){
-		velocity_ 	= minVelocity_;
-		timer_ 		= idleTime_;
-		damage_		= minDamage_;
+		initCircleSize_ = chargeCircleImage_.rectTransform.sizeDelta;
 
 		seConcentrate_ = GetComponent<AudioSource> ();
 	}
 
     void Update() {
 
-		if (timer_ < idleTime_) {
-			timer_ += Time.deltaTime;
+		if (idleTimer_ < idleTime_) {
+			idleTimer_ += Time.deltaTime;
 			return;
 		}
 
         // 押し続けている間、力を貯める
 		if (Input.GetButton ("Fire1")) {
-
-			if (!seConcentrate_.isPlaying && velocity_ <= minVelocity_) {
-				seConcentrate_.Play ();
-			}
-
-			velocity_ += velocityUpPerSecond_ * Time.deltaTime;
-			velocity_ = (velocity_ >= maxVelocity_) ? maxVelocity_ : velocity_;
-
-			damage_ += (int)((float)damegeUpPerSecond_ * Time.deltaTime);
-			damage_ = (damage_ >= maxDamage_) ? maxDamage_ : damage_;
-
+			Charge ();
 		}
-		else if (velocity_ > minVelocity_) {
+		else if (chargeCircleImage_.enabled) {
 			Shot ();
 		}
 
-
     }
+
+	void Charge(){
+		
+		// 力溜め開始
+		if (!seConcentrate_.isPlaying && chargeTimer_ == 0f) {
+			seConcentrate_.Play ();
+			chargeCircleImage_.enabled = true;
+		}
+
+		chargeTimer_ += Time.deltaTime;
+
+		velocity_ = minVelocity_ + (maxVelocity_ - minVelocity_) * (chargeTimer_ / chargeEndTimeAmount_);
+		velocity_ = (velocity_ >= maxVelocity_) ? maxVelocity_ : velocity_;
+
+		damage_ = minDamage_ + (int)((float)(maxDamage_ - minDamage_) * (chargeTimer_ / chargeEndTimeAmount_));
+		damage_ = (damage_ >= maxDamage_) ? maxDamage_ : damage_;
+
+		// 溜めた時間によって円が小さくなっていくエフェクト
+		chargeCircleImage_.rectTransform.sizeDelta
+			= Vector2.Lerp (initCircleSize_, Vector2.zero, (float)damage_ / (float)maxDamage_);
+
+	}
 
 	void Shot(){
 
@@ -80,9 +92,11 @@ public class Bow : MonoBehaviour {
 			seConcentrate_.Stop ();
 		}
 
-		timer_ = 0f;
-		velocity_   = minVelocity_;
-		damage_     = minDamage_;
+		idleTimer_ 		= 0f;
+		chargeTimer_ 	= 0f;
+
+		chargeCircleImage_.enabled = false;
+		chargeCircleImage_.rectTransform.sizeDelta = initCircleSize_;
 	}
 
 }
