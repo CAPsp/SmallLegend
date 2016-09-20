@@ -12,10 +12,12 @@ public class PlayerHealth : MonoBehaviour {
 
 	int health_;
 	float timer_;
+	AudioSource audioHitSE_;
 
 	void Awake(){
-		health_ = maxHealth_;
-		timer_ 	= nonDamageTime_;
+		health_ 	= maxHealth_;
+		timer_ 		= nonDamageTime_;
+		audioHitSE_ = (GetComponents<AudioSource>())[2];
 	}
 
 	void Update(){
@@ -41,12 +43,12 @@ public class PlayerHealth : MonoBehaviour {
 		if (health_ < 0) {
 			health_ = 0;
 		}
+			
+		heartUI_.ChangeActiveHearts(health_);	// UIに現在のHPを通知
 
-		// UIに現在のHPを通知
-		heartUI_.ChangeActiveHearts(health_);
+		damageImage_.color = damageEffectColor_;	// 画面にエフェクトをかける
 
-		// 画面にエフェクトをかける
-		damageImage_.color = damageEffectColor_;
+		audioHitSE_.Play ();
 
 	}
 
