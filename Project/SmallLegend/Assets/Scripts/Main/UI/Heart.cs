@@ -17,18 +17,6 @@ public class Heart : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-		if(Input.GetButton("Fire1")){
-
-			// 子オブジェクトであるハート(Image)を消す
-			Image[] images = hearts_ [0].GetComponentsInChildren<Image>(true);
-			images [1].enabled = false;
-		}
-
-	}
-
 	public void ChangeActiveHearts(int hp){
 
 		int max = PlayerHealth.maxHealth_;
