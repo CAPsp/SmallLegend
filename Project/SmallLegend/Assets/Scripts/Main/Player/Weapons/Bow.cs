@@ -18,11 +18,14 @@ public class Bow : MonoBehaviour {
     float velocity_;
 	int damage_;
 	float timer_;
+	AudioSource seConcentrate_;
 
 	void Awake(){
 		velocity_ 	= minVelocity_;
 		timer_ 		= idleTime_;
 		damage_		= minDamage_;
+
+		seConcentrate_ = GetComponent<AudioSource> ();
 	}
 
     void Update() {
@@ -34,6 +37,10 @@ public class Bow : MonoBehaviour {
 
         // 押し続けている間、力を貯める
 		if (Input.GetButton ("Fire1")) {
+
+			if (!seConcentrate_.isPlaying && velocity_ <= minVelocity_) {
+				seConcentrate_.Play ();
+			}
 
 			velocity_ += velocityUpPerSecond_ * Time.deltaTime;
 			velocity_ = (velocity_ >= maxVelocity_) ? maxVelocity_ : velocity_;
@@ -68,6 +75,11 @@ public class Bow : MonoBehaviour {
 			arrow.damage = damage_;
 		}
 			
+		// 溜めているSEは消す
+		if (seConcentrate_.isPlaying) {
+			seConcentrate_.Stop ();
+		}
+
 		timer_ = 0f;
 		velocity_   = minVelocity_;
 		damage_     = minDamage_;

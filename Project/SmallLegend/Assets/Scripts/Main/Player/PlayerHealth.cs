@@ -36,6 +36,7 @@ public class PlayerHealth : MonoBehaviour {
 			return;
 		}
 
+		timer_ = 0f;
 		health_ -= damage;
 		if (health_ < 0) {
 			health_ = 0;

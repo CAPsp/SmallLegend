@@ -7,8 +7,6 @@ public class DestroyByArea : MonoBehaviour {
 
     void OnTriggerExit(Collider other) {
 
-		Debug.Log (other.gameObject.tag);
-
 		if (other.gameObject.tag == "Player") {
 			playerHealth_.TakeDamage (PlayerHealth.maxHealth_);
 		}
