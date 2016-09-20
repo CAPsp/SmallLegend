@@ -11,6 +11,7 @@ public class Anchor : MonoBehaviour {
 	Rigidbody rigidbody_;
 	LineRenderer anchorLine_;
 	bool isReturning_;
+	AudioSource[] audioSources_;
 
     void Awake() {
 		
@@ -21,6 +22,9 @@ public class Anchor : MonoBehaviour {
 		rigidbody_ 			= GetComponent<Rigidbody> ();
 		anchorLine_ 		= GetComponent<LineRenderer> ();
 		isReturning_ 		= false;
+
+		audioSources_		= GetComponents<AudioSource>();
+		audioSources_ [0].Play ();
     }
 
 	void Update(){
@@ -61,11 +65,12 @@ public class Anchor : MonoBehaviour {
 
         switch (parent.tag) {
 
-            case "Environment":
-            case "Enemy":
-                rigidbody_.velocity = Vector3.zero;
-                playerAnchor_.SetAnchorInfo(rigidbody_.transform);
-                break;
+		case "Environment":
+		case "Enemy":
+			audioSources_ [1].Play ();
+            rigidbody_.velocity = Vector3.zero;
+            playerAnchor_.SetAnchorInfo(rigidbody_.transform);
+            break;
 
         }
 
