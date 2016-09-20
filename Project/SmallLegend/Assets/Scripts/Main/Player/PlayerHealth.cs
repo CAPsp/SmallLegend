@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
 	public float nonDamageTime_ 	= 1f;
 	public static int maxHealth_	= 5;
 	public Heart heartUI_;
+	public Image damageImage_;
+	public Color damageEffectColor_ = new Color(1f, 0f, 0f, 0.5f);
 
 	int health_;
 	float timer_;
@@ -20,6 +23,8 @@ public class PlayerHealth : MonoBehaviour {
 		if (timer_ < nonDamageTime_) {
 			timer_ += Time.deltaTime;
 		}
+			
+		damageImage_.color = Color.Lerp (damageImage_.color, Color.clear, 5f * Time.deltaTime);
 
 	}
 
@@ -38,6 +43,9 @@ public class PlayerHealth : MonoBehaviour {
 
 		// UIに現在のHPを通知
 		heartUI_.ChangeActiveHearts(health_);
+
+		// 画面にエフェクトをかける
+		damageImage_.color = damageEffectColor_;
 
 	}
 
