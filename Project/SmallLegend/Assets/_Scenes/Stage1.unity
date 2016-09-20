@@ -129,11 +129,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010190900294, guid: a3cc44d3909ff7341adda424b9d2436e,
-        type: 2}
-      propertyPath: health_
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3cc44d3909ff7341adda424b9d2436e, type: 2}
   m_IsPrefabParent: 0
@@ -826,7 +821,7 @@ GameObject:
   - 114: {fileID: 1022935589}
   m_Layer: 0
   m_Name: GameArea
-  m_TagString: Untagged
+  m_TagString: GameArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
