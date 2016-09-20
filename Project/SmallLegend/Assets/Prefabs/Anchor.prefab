@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14281f17d1d20fc49998da2920956e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limitAnchorLength_: 20
+  disableLength_: 2
 --- !u!135 &135000010025420178
 SphereCollider:
   m_ObjectHideFlags: 1
