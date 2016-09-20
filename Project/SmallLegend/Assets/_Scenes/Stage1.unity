@@ -136,7 +136,7 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 4000012583738158, guid: 2ae38c03fe4237f4f94e256e366749d3,
     type: 2}
-  m_PrefabInternal: {fileID: 1626014190}
+  m_PrefabInternal: {fileID: 1768344998}
 --- !u!1 &232262314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1466,7 @@ RectTransform:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000013735627368, guid: 2ae38c03fe4237f4f94e256e366749d3,
     type: 2}
-  m_PrefabInternal: {fileID: 1626014190}
+  m_PrefabInternal: {fileID: 1768344998}
   m_Script: {fileID: 11500000, guid: 2fa40783c690e48b5bb0910a9ec6b219, type: 3}
 --- !u!1 &1549009752
 GameObject:
@@ -1644,7 +1644,7 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1001 &1626014190
+--- !u!1001 &1768344998
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1708,6 +1708,18 @@ Prefab:
       propertyPath: damageImage_
       value: 
       objectReference: {fileID: 1430485602}
+    - target: {fileID: 82000013988345174, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243000011942532004, guid: b35427eb40c024ffda85777a4cc854b4,
+        type: 2}
+    - target: {fileID: 82000013202711952, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243000010611637926, guid: b35427eb40c024ffda85777a4cc854b4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
   m_IsPrefabParent: 0

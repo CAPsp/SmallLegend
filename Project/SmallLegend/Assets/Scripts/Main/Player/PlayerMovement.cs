@@ -10,8 +10,9 @@ public class PlayerMovement : MonoBehaviour {
     Transform cameraTransform_;
     float cameraAngleOffsetY;   // 初期のカメラのY軸回転角を保存
     Rigidbody playerRigidbody_;
-    bool isGround_ = false;
+    bool isGround_ = true;
     Vector3 velocity_;
+	AudioSource[] audioSources_;
 
     void Awake() {
         cameraTransform_    = GameObject.FindGameObjectWithTag("MainCamera").transform;
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour {
         playerRigidbody_ = GetComponent<Rigidbody>();
 
         velocity_ = Vector3.zero;
+
+		audioSources_ = GetComponents<AudioSource> ();	// 0がジャンプ、1が着地
     }
 
 	void FixedUpdate() {
@@ -29,13 +32,20 @@ public class PlayerMovement : MonoBehaviour {
         Move(h, w);
         Turning();
 
+		bool tmp = isGround_;
         isGround_ = CheckGrounded();
+
+		// 直前でfalse、現在trueなら着地した直後とみなす
+		if (!tmp && isGround_) {
+			audioSources_ [1].Play ();
+		}
 
         // 接地してる:ジャンプ可能　設置してない：重力付加
         if (isGround_) {
             velocity_ = Vector3.zero;
 
             if (Input.GetButton("Jump")) {
+				audioSources_ [0].Play ();
                 velocity_.y = Physics.gravity.y * (-1.0f);   
             }
 
