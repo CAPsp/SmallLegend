@@ -10,7 +10,6 @@ public class PlayerAnchor : MonoBehaviour {
 	public float moveVelocity_      = 50f;
 	public float invalidDistance_   = 3f;   // アンカー移動が無効になるプレイヤーとアンカーの位置
 	
-	//LineRenderer anchorLine_;
 	GameObject currentAnchor_   = null;
 	Transform anchorPoint_      = null;
 	bool isMoving_              = false;
@@ -23,7 +22,6 @@ public class PlayerAnchor : MonoBehaviour {
 		playerMovement_     = GetComponent<PlayerMovement>();
 		playerRigidbody_    = GetComponent<Rigidbody>();
 		playerCollider_     = GetComponent<Collider>();
-		//  anchorLine_ = GetComponent<LineRenderer>();
 	}
 	
 	// Update is called once per frame
