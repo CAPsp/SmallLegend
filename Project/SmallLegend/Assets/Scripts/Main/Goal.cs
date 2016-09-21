@@ -4,14 +4,21 @@ using System.Collections;
 public class Goal : MonoBehaviour {
 
 	public AudioSource audioBGM_;
-	public float endBGMLimitVolume_ = 0.05f;	// BGMが終わったと判断するvolume
-	public Camera mainCamera_;
+	public float endBGMLimitVolume_ 	= 0.05f;	// BGMが終わったと判断するvolume
+	public float endMoveCameraDistance_ = 1f;
+	public Transform cameraRigTransform_;
+	public Transform clearCameraTransform_;
+	public float effectCameraMoveSpeed_ = 5f;
 
+	Transform pivotTransform_;
+	Camera mainCamera_;
 	GameObject playerObject_;
 	bool isClear_ = false;
 
 	void Awake(){
-		playerObject_ = GameObject.FindWithTag ("Player");
+		pivotTransform_	= cameraRigTransform_.GetChild (0);
+		mainCamera_ 	= pivotTransform_.GetChild (0).gameObject.GetComponent<Camera>();
+		playerObject_ 	= GameObject.FindWithTag ("Player");
 	}
 
 	void Update(){
@@ -26,8 +33,7 @@ public class Goal : MonoBehaviour {
 
 	}
 
-	// 何かに当たったら消える
-	void OnCollisionEnter(Collision other) {
+	void OnTriggerEnter(Collider other) {
 
 		if (other.gameObject == playerObject_) {
 			ReadyClearEffect ();
@@ -45,10 +51,20 @@ public class Goal : MonoBehaviour {
 		playerObject_.GetComponent<PlayerMovement> ().enabled 	= false;
 		playerObject_.GetComponent<PlayerAnchor> ().enabled 	= false;
 
+		// 地面に着地するように処理
+		Rigidbody rigid = playerObject_.GetComponent<Rigidbody> ();
+		rigid.useGravity 	= true;
+		rigid.drag 			= 0f;
+
+		// 一時的に現在のカメラのパラメーターを保存 
+		Vector3 tmpPosition = mainCamera_.transform.position;
+		Quaternion tmpRotation = mainCamera_.transform.rotation;
+
 		// カメラの操作権を奪う
-		Vector3 currentCameraPoint 		= mainCamera_.transform.parent.transform.parent.transform.position;
+		cameraRigTransform_.gameObject.SetActive (false);
 		mainCamera_.transform.parent 	= null;
-		mainCamera_.transform.position 	= currentCameraPoint;
+		mainCamera_.transform.position 	= tmpPosition;
+		mainCamera_.transform.rotation	= tmpRotation;
 
 		isClear_ = true;
 
@@ -71,6 +87,15 @@ public class Goal : MonoBehaviour {
 		}
 
 		// カメラをPlayerの前に持ってくる処理
+		Transform cameraTF = mainCamera_.transform;
+		if (Vector3.Distance (clearCameraTransform_.position, cameraTF.position) > endMoveCameraDistance_ ||
+			Vector3.Distance (clearCameraTransform_.rotation.eulerAngles, cameraTF.rotation.eulerAngles) > endMoveCameraDistance_) {
+
+			cameraTF.position = Vector3.Lerp (cameraTF.position, clearCameraTransform_.position, Time.deltaTime * effectCameraMoveSpeed_);
+			cameraTF.rotation = Quaternion.Lerp (cameraTF.rotation, clearCameraTransform_.rotation, Time.deltaTime * effectCameraMoveSpeed_);
+
+			isEnd = false;
+		}
 
 
 		return isEnd;
