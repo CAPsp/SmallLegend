@@ -9,7 +9,7 @@ public class NextStage : MonoBehaviour {
 	public Image displayImage_;
 
 	bool isPushed_ 	= false;
-	float alpha = 0f;
+	float alpha_ = 0f;
 
 	void Update(){
 
@@ -23,8 +23,8 @@ public class NextStage : MonoBehaviour {
 
 	bool DarkChange(){
 		
-		displayImage_.color = new Color (0f, 0f, 0f, alpha);
-		alpha += 0.05f;
+		displayImage_.color = new Color (0f, 0f, 0f, alpha_);
+		alpha_ += 0.05f;
 
 		if (displayImage_.color.a >= 1.0f) {
 			return true;

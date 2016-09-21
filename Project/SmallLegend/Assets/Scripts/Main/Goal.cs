@@ -31,7 +31,6 @@ public class Goal : MonoBehaviour {
 		if (isClear_) {
 
 			if (ClearEffect ()) {
-				Cursor.lockState = CursorLockMode.None;
 				clearUIobject_.SetActive (true);
 			}
 

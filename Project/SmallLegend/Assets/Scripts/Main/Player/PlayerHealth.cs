@@ -9,11 +9,14 @@ public class PlayerHealth : MonoBehaviour {
 	public Heart heartUI_;
 	public Image displayImage_;
 	public Color damageEffectColor_ = new Color(1f, 0f, 0f, 0.5f);
+	public GameObject gameoverObject_;
+	public AudioSource audioBGM_;
 
 	int health_;
 	float timer_;
 	AudioSource audioHitSE_;
 	bool nonDamage_ = false;
+	float alpha_	= 0f;
 
 	void Awake(){
 		health_ 	= maxHealth_;
@@ -22,6 +25,11 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	void Update(){
+
+		if (health_ == 0) {
+			DeathEffect ();
+			return;
+		}
 
 		if (timer_ < nonDamageTime_) {
 			timer_ += Time.deltaTime;
@@ -41,8 +49,8 @@ public class PlayerHealth : MonoBehaviour {
 
 		timer_ = 0f;
 		health_ -= damage;
-		if (health_ < 0) {
-			health_ = 0;
+		if (health_ <= 0) {
+			ReadyDeathEffect ();
 		}
 			
 		heartUI_.ChangeActiveHearts(health_);	// UIに現在のHPを通知
@@ -55,6 +63,38 @@ public class PlayerHealth : MonoBehaviour {
 		
 	public void SetNonDamage(bool value){
 		nonDamage_ = value;
+	}
+
+	void ReadyDeathEffect(){
+
+		health_ = 0;
+
+		audioBGM_.Stop ();
+		GetComponent<PlayerMovement> ().enabled = false;
+		GetComponent<PlayerAnchor> ().enabled 	= false;
+
+		// 武器を使えなくする
+		GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
+		for (int i = 0; i < weapons.Length; i++) {
+			weapons [i].SetActive (false);
+		}
+	}
+
+	void DeathEffect(){
+
+		// 気休めの死亡アニメーション
+		Quaternion x90Rotation = Quaternion.AngleAxis(90f, Vector3.right);
+		transform.localRotation = Quaternion.Lerp(transform.localRotation, x90Rotation, 5f * Time.deltaTime);
+
+		// 暗転していく
+		displayImage_.color = new Color (0f, 0f, 0f, alpha_);
+		alpha_ += 0.05f;
+
+		if (displayImage_.color.a >= 1.0f) {
+			Cursor.lockState 	= CursorLockMode.None;
+			Cursor.visible 		= true;
+			gameoverObject_.SetActive (true);
+		}
 	}
 
 }
