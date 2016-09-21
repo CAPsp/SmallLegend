@@ -7,12 +7,13 @@ public class PlayerHealth : MonoBehaviour {
 	public float nonDamageTime_ 	= 1f;
 	public static int maxHealth_	= 5;
 	public Heart heartUI_;
-	public Image damageImage_;
+	public Image displayImage_;
 	public Color damageEffectColor_ = new Color(1f, 0f, 0f, 0.5f);
 
 	int health_;
 	float timer_;
 	AudioSource audioHitSE_;
+	bool nonDamage_ = false;
 
 	void Awake(){
 		health_ 	= maxHealth_;
@@ -26,7 +27,7 @@ public class PlayerHealth : MonoBehaviour {
 			timer_ += Time.deltaTime;
 		}
 			
-		damageImage_.color = Color.Lerp (damageImage_.color, Color.clear, 5f * Time.deltaTime);
+		displayImage_.color = Color.Lerp (displayImage_.color, Color.clear, 5f * Time.deltaTime);
 
 	}
 
@@ -34,7 +35,7 @@ public class PlayerHealth : MonoBehaviour {
 	public void TakeDamage(int damage){
 
 		// 無敵時間中は攻撃を受けない
-		if (timer_ < nonDamageTime_ || health_ <= 0) {
+		if (nonDamage_ || timer_ < nonDamageTime_ || health_ <= 0) {
 			return;
 		}
 
@@ -46,10 +47,14 @@ public class PlayerHealth : MonoBehaviour {
 			
 		heartUI_.ChangeActiveHearts(health_);	// UIに現在のHPを通知
 
-		damageImage_.color = damageEffectColor_;	// 画面にエフェクトをかける
+		displayImage_.color = damageEffectColor_;	// 画面にエフェクトをかける
 
 		audioHitSE_.Play ();
 
+	}
+		
+	public void SetNonDamage(bool value){
+		nonDamage_ = value;
 	}
 
 }

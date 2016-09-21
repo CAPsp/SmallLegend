@@ -89,8 +89,10 @@ public class PlayerMovement : MonoBehaviour {
 
         Debug.DrawLine(playerRayTransform_.position, (playerRayTransform_.position - transform.up * rayRange_), Color.red);
 
-        if (Physics.Linecast(playerRayTransform_.position, (playerRayTransform_.position - transform.up * rayRange_))) {
-            return true;
+		RaycastHit hitCollider;
+		if (Physics.Linecast(playerRayTransform_.position, (playerRayTransform_.position - transform.up * rayRange_), out hitCollider)) {
+			
+			return !hitCollider.collider.isTrigger;
         }
 
         return false;

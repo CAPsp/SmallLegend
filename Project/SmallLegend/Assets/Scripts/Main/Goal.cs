@@ -9,6 +9,7 @@ public class Goal : MonoBehaviour {
 	public Transform cameraRigTransform_;
 	public Transform clearCameraTransform_;
 	public float effectCameraMoveSpeed_ = 5f;
+	public GameObject clearUIobject_;
 
 	Transform pivotTransform_;
 	Camera mainCamera_;
@@ -23,10 +24,15 @@ public class Goal : MonoBehaviour {
 
 	void Update(){
 
+		if (clearUIobject_.activeInHierarchy) {
+			return;
+		}
+
 		if (isClear_) {
 
 			if (ClearEffect ()) {
-				Debug.Log ("End");
+				Cursor.lockState = CursorLockMode.None;
+				clearUIobject_.SetActive (true);
 			}
 
 		}
@@ -50,6 +56,15 @@ public class Goal : MonoBehaviour {
 		// プレイヤーを操作不能にする
 		playerObject_.GetComponent<PlayerMovement> ().enabled 	= false;
 		playerObject_.GetComponent<PlayerAnchor> ().enabled 	= false;
+
+		// 無敵にする
+		playerObject_.GetComponent<PlayerHealth> ().SetNonDamage (true);
+
+		// 武器を使えなくする
+		GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
+		for (int i = 0; i < weapons.Length; i++) {
+			weapons [i].SetActive (false);
+		}
 
 		// 地面に着地するように処理
 		Rigidbody rigid = playerObject_.GetComponent<Rigidbody> ();

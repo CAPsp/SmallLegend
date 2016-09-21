@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - GameArea
   - Goal
+  - Weapon
   layers:
   - Default
   - TransparentFX
