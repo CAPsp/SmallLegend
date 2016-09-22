@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 velocity_;
 	AudioSource[] audioSources_;
 
+    [SerializeField]
+    Animator playerAnimator;
+
     void Awake() {
         cameraTransform_    = GameObject.FindGameObjectWithTag("MainCamera").transform;
         cameraAngleOffsetY  = cameraTransform_.rotation.eulerAngles.y;
@@ -63,6 +66,16 @@ public class PlayerMovement : MonoBehaviour {
 
         // ワールド座標時の移動量に置き換え
         Vector3 worldMove = new Vector3(h, 0.0f, w);
+
+        //アニメーション
+        if (w != 0)
+        {
+            playerAnimator.SetBool("Walk",true);
+        }
+        else
+        {
+            playerAnimator.SetBool("Walk", false);
+        }
 
         // カメラの向きに合わせて移動を決定
         Vector3 movement = cameraTransform_.rotation * worldMove;
