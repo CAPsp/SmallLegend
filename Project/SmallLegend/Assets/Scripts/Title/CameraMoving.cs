@@ -21,7 +21,7 @@ public class CameraMoving : MonoBehaviour {
 		transform.rotation = Quaternion.Lerp (transform.rotation, destination_.rotation, Time.deltaTime * rotateSpeed_);
 
 		// 目的地についたら次の候補を選ぶ
-		if (Vector3.Distance (transform.position, destination_.position) <= 1.0f) {
+		if (Vector3.Distance (transform.position, destination_.position) <= 1f) {
 			destination_ = PositionSelect (index_);
 		}
 
