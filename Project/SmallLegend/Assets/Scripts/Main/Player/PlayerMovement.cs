@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Utility;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float speed_ = 6.00f;
-    public Transform playerRayTransform_;     // 地面設置判定のためのRayを飛ばす体の位置
-    public float rayRange_;
+    [SerializeField] float speed_ = 6.00f;
+    [SerializeField] Transform playerRayTransform_;     // 地面設置判定のためのRayを飛ばす体の位置
+    [SerializeField] float rayRange_;
+	[SerializeField]AudioClip audioJumpClip_;
+	[SerializeField]AudioClip audioLandingClip_;
 
     Transform cameraTransform_;
     float cameraAngleOffsetY;   // 初期のカメラのY軸回転角を保存
     Rigidbody playerRigidbody_;
     bool isGround_ = true;
     Vector3 velocity_;
-	AudioSource[] audioSources_;
+	AudioSource audioSource_;
 
     [SerializeField]
     Animator playerAnimator;
@@ -25,7 +28,7 @@ public class PlayerMovement : MonoBehaviour {
 
         velocity_ = Vector3.zero;
 
-		audioSources_ = GetComponents<AudioSource> ();	// 0がジャンプ、1が着地
+		audioSource_ = GetComponent<AudioSource> ();
     }
 
 	void FixedUpdate() {
@@ -40,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		// 直前でfalse、現在trueなら着地した直後とみなす
 		if (!tmp && isGround_) {
-			audioSources_ [1].Play ();
+			AudioUtil.PlayFromClips (audioSource_, audioLandingClip_);
 		}
 
         // 接地してる:ジャンプ可能　設置してない：重力付加
@@ -48,7 +51,7 @@ public class PlayerMovement : MonoBehaviour {
             velocity_ = Vector3.zero;
 
             if (Input.GetButton("Jump")) {
-				audioSources_ [0].Play ();
+				AudioUtil.PlayFromClips (audioSource_, audioJumpClip_);
                 velocity_.y = Physics.gravity.y * (-1.0f);   
             }
 

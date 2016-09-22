@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Utility;
 
 public class Anchor : MonoBehaviour {
 
-	public float limitAnchorLength_ = 20f;
-	public float disableLength_		= 2f;	// 戻ってきた後に消える判定をする最大距離範囲
+	[SerializeField] float limitAnchorLength_ 	= 20f;
+	[SerializeField] float disableLength_		= 2f;			// 戻ってきた後に消える判定をする最大距離範囲
+	[SerializeField] AudioClip audioHitClip_;
 
     PlayerAnchor playerAnchor_;
 	Transform playerTransform_;
 	Rigidbody rigidbody_;
 	LineRenderer anchorLine_;
+	AudioSource audioSource_;
 	bool isReturning_;
-	AudioSource[] audioSources_;
 
     void Awake() {
 		
@@ -21,10 +23,10 @@ public class Anchor : MonoBehaviour {
 
 		rigidbody_ 			= GetComponent<Rigidbody> ();
 		anchorLine_ 		= GetComponent<LineRenderer> ();
+		audioSource_		= GetComponent<AudioSource>();
 		isReturning_ 		= false;
 
-		audioSources_		= GetComponents<AudioSource>();
-		audioSources_ [0].Play ();
+		audioSource_.Play ();	// AudioSourceに初期で入っている音をならす(射出音を想定)
     }
 
 	void Update(){
@@ -67,7 +69,7 @@ public class Anchor : MonoBehaviour {
 
 		case "Environment":
 		case "Enemy":
-			audioSources_ [1].Play ();
+			AudioUtil.PlayFromClips (audioSource_, audioHitClip_);
             rigidbody_.velocity = Vector3.zero;
             playerAnchor_.SetAnchorInfo(rigidbody_.transform);
             break;

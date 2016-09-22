@@ -38,9 +38,9 @@ GameObject:
   - 4: {fileID: 4000013223375004}
   - 54: {fileID: 54000012896731022}
   - 135: {fileID: 135000012812425028}
+  - 195: {fileID: 195000012536914746}
   - 114: {fileID: 114000010190900294}
   - 114: {fileID: 114000014268268264}
-  - 195: {fileID: 195000012536914746}
   - 114: {fileID: 114000014147618096}
   - 82: {fileID: 82000010985475456}
   m_Layer: 0
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013630938324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.01, y: 2.98, z: 9.51}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:

@@ -4,24 +4,26 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
-	public float nonDamageTime_ 	= 1f;
 	public static int maxHealth_	= 5;
-	public Heart heartUI_;
-	public Image displayImage_;
-	public Color damageEffectColor_ = new Color(1f, 0f, 0f, 0.5f);
-	public GameObject gameoverObject_;
-	public AudioSource audioBGM_;
+
+	[SerializeField] float nonDamageTime_ 	= 1f;
+	[SerializeField] Heart heartUI_;
+	[SerializeField] Image displayImage_;
+	[SerializeField] Color damageEffectColor_ = new Color(1f, 0f, 0f, 0.5f);
+	[SerializeField] GameObject gameoverObject_;
+	[SerializeField] AudioSource audioBGM_;
+	[SerializeField] AudioClip audioHitClip_;
 
 	int health_;
 	float timer_;
-	AudioSource audioHitSE_;
 	bool nonDamage_ = false;
 	float alpha_	= 0f;
+	AudioSource audioSource_;
 
 	void Awake(){
-		health_ 	= maxHealth_;
-		timer_ 		= nonDamageTime_;
-		audioHitSE_ = (GetComponents<AudioSource>())[2];
+		health_ 		= maxHealth_;
+		timer_ 			= nonDamageTime_;
+		audioSource_ 	= GetComponent<AudioSource>();
 	}
 
 	void Update(){
@@ -57,7 +59,8 @@ public class PlayerHealth : MonoBehaviour {
 
 		displayImage_.color = damageEffectColor_;	// 画面にエフェクトをかける
 
-		audioHitSE_.Play ();
+		audioSource_.clip = audioHitClip_;
+		audioSource_.Play ();
 
 	}
 		
