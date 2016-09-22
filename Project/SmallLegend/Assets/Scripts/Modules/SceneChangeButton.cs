@@ -2,40 +2,30 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Original.UI;
 
-public class NextStage : MonoBehaviour {
+public class SceneChangeButton : MonoBehaviour {
 
 	public string nextSceneName_;
 	public Image displayImage_;
+	public float darckChangeSpeed_ = 1.0f;
 
 	bool isPushed_ 	= false;
-	float alpha_ = 0f;
+	DarkChange darkChange_;
 
 	void Update(){
 
 		if (isPushed_) {
-			if (DarkChange ()) {
+			if (darkChange_.CallAtUpdate()) {
 				SceneManager.LoadScene (nextSceneName_);
 			}
 		}
 
 	}
 
-	bool DarkChange(){
-		
-		displayImage_.color = new Color (0f, 0f, 0f, alpha_);
-		alpha_ += Time.deltaTime;
-
-		if (displayImage_.color.a >= 1.0f) {
-			return true;
-		}
-
-		return false;
-	}
-
 	public void Push(){
 		isPushed_ = true;
-		displayImage_.color = Color.clear;
+		darkChange_ = new DarkChange (displayImage_, darckChangeSpeed_);
 	}
 
 }

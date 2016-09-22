@@ -1529,7 +1529,7 @@ GameObject:
   - 222: {fileID: 1124998373}
   - 114: {fileID: 1124998372}
   - 114: {fileID: 1124998371}
-  - 114: {fileID: 1124998374}
+  - 114: {fileID: 1124998375}
   m_Layer: 5
   m_Name: NextStageButton
   m_TagString: Untagged
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1124998374}
+      - m_Target: {fileID: 1124998375}
         m_MethodName: Push
         m_Mode: 1
         m_Arguments:
@@ -1641,7 +1641,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1124998369}
---- !u!114 &1124998374
+--- !u!114 &1124998375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1649,11 +1649,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1124998369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24cd1055b528f4788aa2b595c03ead6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f908ecb0e22b44e1ac07a846a3108dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName_: Stage1
   displayImage_: {fileID: 1430485602}
+  speed_: 1
 --- !u!1 &1132592279
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Original.UI;
 
 public class PlayerHealth : MonoBehaviour {
 
@@ -17,7 +18,7 @@ public class PlayerHealth : MonoBehaviour {
 	int health_;
 	float timer_;
 	bool nonDamage_ = false;
-	float alpha_	= 0f;
+	DarkChange darkChange_;
 	AudioSource audioSource_;
 
 	void Awake(){
@@ -71,6 +72,7 @@ public class PlayerHealth : MonoBehaviour {
 	void ReadyDeathEffect(){
 
 		health_ = 0;
+		darkChange_ = new DarkChange (displayImage_, 1.0f);
 
 		audioBGM_.Stop ();
 		GetComponent<PlayerMovement> ().enabled = false;
@@ -89,15 +91,13 @@ public class PlayerHealth : MonoBehaviour {
 		Quaternion x90Rotation = Quaternion.AngleAxis(90f, Vector3.right);
 		transform.localRotation = Quaternion.Lerp(transform.localRotation, x90Rotation, 5f * Time.deltaTime);
 
-		// 暗転していく
-		displayImage_.color = new Color (0f, 0f, 0f, alpha_);
-		alpha_ += Time.deltaTime;
-
-		if (displayImage_.color.a >= 1.0f) {
+		// 暗転処理
+		if (darkChange_.CallAtUpdate ()) {
 			Cursor.lockState 	= CursorLockMode.None;
 			Cursor.visible 		= true;
 			gameoverObject_.SetActive (true);
 		}
+			
 	}
 
 }
