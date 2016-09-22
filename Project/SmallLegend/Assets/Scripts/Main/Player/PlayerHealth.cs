@@ -88,7 +88,7 @@ public class PlayerHealth : MonoBehaviour {
 
 		// 暗転していく
 		displayImage_.color = new Color (0f, 0f, 0f, alpha_);
-		alpha_ += 0.05f;
+		alpha_ += Time.deltaTime;
 
 		if (displayImage_.color.a >= 1.0f) {
 			Cursor.lockState 	= CursorLockMode.None;
