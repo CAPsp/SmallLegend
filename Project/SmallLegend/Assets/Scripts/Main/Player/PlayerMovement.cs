@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour {
     bool isGround_ = true;
     Vector3 velocity_;
 	AudioSource audioSource_;
-
-    [SerializeField]
     Animator playerAnimator;
 
     void Awake() {
@@ -28,7 +26,8 @@ public class PlayerMovement : MonoBehaviour {
 
         velocity_ = Vector3.zero;
 
-		audioSource_ = GetComponent<AudioSource> ();
+		audioSource_ 	= GetComponent<AudioSource> ();
+		playerAnimator 	= GetComponent<Animator> ();
     }
 
 	void FixedUpdate() {

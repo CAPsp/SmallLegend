@@ -47,7 +47,7 @@ public class EnemyHealth : MonoBehaviour {
     }
 
 	// SEが鳴って体は一瞬赤くなる
-	void TakeDamage(int damage){
+	public void TakeDamage(int damage){
 
 		health_ -= damage;
 

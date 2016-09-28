@@ -4,31 +4,39 @@ using System.Collections;
 
 public class PlayerAnchor : MonoBehaviour {
 	
-	public GameObject prefabAnchor_;   		// アンカーとなるprefab
-	public Transform targetPoint_;     		// 狙うポイント
-	public Transform firePoint_;       		// 生成ポイント
-	public float moveVelocity_      = 50f;
-	public float invalidDistance_   = 3f;   // アンカー移動が無効になるプレイヤーとアンカーの位置
-	
-	GameObject currentAnchor_   = null;
+	public GameObject prefabAnchor_;   			// アンカーとなるprefab
+	public Transform targetPoint_;     			// 狙うポイント
+	public Transform firePoint_;       			// 生成ポイント
+	public float moveVelocity_      	= 50f;
+	public float invalidDistance_   	= 3f;   // アンカー移動が無効になるプレイヤーとアンカーの位置
+	[SerializeField] float intervalTime_ = 0.2f;
+
+	GameObject currentAnchor_	= null;
 	Transform anchorPoint_      = null;
 	bool isMoving_              = false;
 	Rigidbody playerRigidbody_;
 	PlayerMovement playerMovement_;
 	Collider playerCollider_;
+	float timer_;
 	
 	
 	void Awake() {
 		playerMovement_     = GetComponent<PlayerMovement>();
 		playerRigidbody_    = GetComponent<Rigidbody>();
 		playerCollider_     = GetComponent<Collider>();
+		timer_				= intervalTime_;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		// 右クリックでアンカーをfirePoint_　めがけて射出
-		if (currentAnchor_ == null && Input.GetButton("Fire2")) {
+
+		timer_ += Time.deltaTime;
+		if (timer_ >= float.MaxValue) {	// ないだろうけどオーバーフロー回避
+			timer_ = intervalTime_;
+		}
+
+		// 右クリックでアンカーをfirePoint_めがけて射出
+		if (timer_ >= intervalTime_ && currentAnchor_ == null && Input.GetButton("Fire2")) {
 			Shot();
 		}
 		
@@ -76,17 +84,25 @@ public class PlayerAnchor : MonoBehaviour {
 		
 		// 等速直線運動
 		currentAnchor_.GetComponent<Rigidbody>().velocity = shotAngle * moveVelocity_;
-		
+
+		timer_ = 0f;
 	}
 	
 	void Moving() {
+
+		try{
+			// 角度を計算、正規化
+			Vector3 basePoint = playerCollider_.transform.position - new Vector3(0f, playerCollider_.bounds.extents.y, 0f);
+			Vector3 angle = anchorPoint_.position - basePoint;
+			angle.Normalize();
+			
+			playerRigidbody_.transform.position += angle * (moveVelocity_ * Time.deltaTime);   // 移動速度はアンカーと同じ
 		
-		// 角度を計算、正規化
-		Vector3 basePoint = playerCollider_.transform.position - new Vector3(0f, playerCollider_.bounds.extents.y, 0f);
-		Vector3 angle = anchorPoint_.position - basePoint;
-		angle.Normalize();
-		
-		playerRigidbody_.transform.position += angle * (moveVelocity_ * Time.deltaTime);   // 移動速度はアンカーと同じ
+		}catch(MissingReferenceException){	// anchorPointがnullになるときがあったので例外処理追加
+			Debug.Log("(´∀｀)＜ぬるぽ");
+			isMoving_ = false;
+		}
+	
 	}
 	
 	bool CheckValidAnchor() {
