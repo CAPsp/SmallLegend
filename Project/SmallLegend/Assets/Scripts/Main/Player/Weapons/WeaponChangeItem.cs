@@ -4,12 +4,16 @@ using System.Collections;
 public class WeaponChangeItem : MonoBehaviour {
 
 	[SerializeField, TooltipAttribute("1: MachineGun, other: Bow")] int weaponID_ = 0;
+	[SerializeField] CurrentWeaponUI weaponUI_;
 
 	GameObject parentOfWeapons_;
 	MonoBehaviour thisWeapon_;		// このオブジェクトが請け負う武器
 	MeshRenderer mesh_;
 
 	void Awake(){
+
+		weaponUI_ = GameObject.FindGameObjectWithTag ("UIWeapon").GetComponent<CurrentWeaponUI>();
+
 		parentOfWeapons_ = GameObject.FindGameObjectWithTag ("Weapon").transform.parent.gameObject;
 
 		switch (weaponID_) {
@@ -37,7 +41,7 @@ public class WeaponChangeItem : MonoBehaviour {
 
 	void WeaponChange(){
 
-		// 同じ武器あらスルー
+		// 同じ武器ならスルー
 		MonoBehaviour current = CurrentWeapon ();
 		if (current == thisWeapon_) {
 			Debug.Log("Same");
@@ -55,6 +59,7 @@ public class WeaponChangeItem : MonoBehaviour {
 		thisWeapon_ 		= tmp;
 
 		mesh_.material = thisWeapon_.gameObject.GetComponent<MeshRenderer> ().material;
+		weaponUI_.ChangeImageUI (current.gameObject.GetComponent<MeshRenderer>().material);
 
 	}
 
