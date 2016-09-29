@@ -9,13 +9,13 @@ public class EnemyHealth : MonoBehaviour {
 	public float damageEffectTime_	= 0.5f;
 
 	AudioSource hitSE_;
-	MeshRenderer modelMesh_;
+	MeshRenderer[] modelMeshes_;
 	float timer_ = 0f;
 
 
 	void Awake(){
-		hitSE_ 		= GetComponent<AudioSource> ();
-		modelMesh_ 	= gameObject.GetComponentInChildren<MeshRenderer> ();
+		hitSE_ 			= GetComponent<AudioSource> ();
+		modelMeshes_ 	= gameObject.GetComponentsInChildren<MeshRenderer> ();
 	}
 
     void OnCollisionEnter(Collision other) {
@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour {
 			timer_ += Time.deltaTime;
 
 			if (timer_ >= damageEffectTime_) {
-				modelMesh_.material = defaultMeshMaterial_;
+				MeshesChange (defaultMeshMaterial_);
 			}
 		}
 
@@ -53,7 +53,7 @@ public class EnemyHealth : MonoBehaviour {
 
 		hitSE_.Play ();
 
-		modelMesh_.material = damageMeshMaterial_;
+		MeshesChange (damageMeshMaterial_);
 		timer_ = 0f;
 
 		Debug.Log("Health : " + health_);
@@ -69,6 +69,14 @@ public class EnemyHealth : MonoBehaviour {
 		}
 
 		Destroy(gameObject);
+
+	}
+
+	void MeshesChange(Material toMesh){
+
+		for (int i = 0; i < modelMeshes_.Length; i++) {
+			modelMeshes_ [i].material = toMesh;
+		}
 
 	}
 
