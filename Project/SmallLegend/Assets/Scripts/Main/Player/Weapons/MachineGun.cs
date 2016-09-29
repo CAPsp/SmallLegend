@@ -74,5 +74,7 @@ public class MachineGun : MonoBehaviour {
 		fireLineRenderer_.SetPositions (lineRenderer);
 		fireLineRenderer_.enabled = true;
 
+		GetComponent<AudioSource> ().Play();
+
 	}
 }

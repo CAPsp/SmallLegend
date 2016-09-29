@@ -2165,10 +2165,15 @@ Prefab:
       propertyPath: audioBGM_
       value: 
       objectReference: {fileID: 1144015592}
-    - target: {fileID: 114000012812894232, guid: 2ae38c03fe4237f4f94e256e366749d3,
+    - target: {fileID: 120000012619539372, guid: 2ae38c03fe4237f4f94e256e366749d3,
         type: 2}
-      propertyPath: maxDispersion_
-      value: 0.2
+      propertyPath: m_Parameters.startWidth
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 120000012619539372, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: m_Parameters.endWidth
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
