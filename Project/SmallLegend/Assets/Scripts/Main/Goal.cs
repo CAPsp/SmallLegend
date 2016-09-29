@@ -52,10 +52,6 @@ public class Goal : MonoBehaviour {
 		// ユーザからの入力初期化
 		Input.ResetInputAxes ();
 
-		// プレイヤーを操作不能にする
-		playerObject_.GetComponent<PlayerMovement> ().enabled 	= false;
-		playerObject_.GetComponent<PlayerAnchor> ().enabled 	= false;
-
 		// 無敵にする
 		playerObject_.GetComponent<PlayerHealth> ().SetNonDamage (true);
 
@@ -88,6 +84,10 @@ public class Goal : MonoBehaviour {
 	bool ClearEffect(){
 
 		bool isEnd = true;
+
+		// プレイヤーを操作不能にする
+		playerObject_.GetComponent<PlayerMovement> ().enabled 	= false;
+		playerObject_.GetComponent<PlayerAnchor> ().enabled 	= false;
 
 		// BGMをフェードアウトする処理
 		if (audioBGM_.isPlaying) {
