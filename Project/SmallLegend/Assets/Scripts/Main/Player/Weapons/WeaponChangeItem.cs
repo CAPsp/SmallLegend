@@ -44,11 +44,8 @@ public class WeaponChangeItem : MonoBehaviour {
 		// 同じ武器ならスルー
 		MonoBehaviour current = CurrentWeapon ();
 		if (current == thisWeapon_) {
-			Debug.Log("Same");
 			return;
 		}
-			
-		Debug.Log("Diff");
 
 		current.enabled 	= false;
 		thisWeapon_.enabled = true;

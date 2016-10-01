@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyAttack : MonoBehaviour {
+public class Enemy1Attack : MonoBehaviour {
 
 	public float boundVelocity_ = 10f;	// 跳ね返る速度
 
