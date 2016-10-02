@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class PlayerAnchor : MonoBehaviour {
 	
-	public GameObject prefabAnchor_;   			// アンカーとなるprefab
-	public Transform targetPoint_;     			// 狙うポイント
-	public Transform firePoint_;       			// 生成ポイント
-	public float moveVelocity_      	= 50f;
-	public float invalidDistance_   	= 3f;   // アンカー移動が無効になるプレイヤーとアンカーの位置
-	[SerializeField] float intervalTime_ = 0.2f;
+	[SerializeField] GameObject prefabAnchor_;   			// アンカーとなるprefab
+	[SerializeField] Transform targetPoint_;     			// 狙うポイント(Reticle)
+	[SerializeField] Transform firePoint_;       			// 生成ポイント
+	[SerializeField] float moveVelocity_      	= 50f;
+	[SerializeField] float invalidDistance_   	= 3f;   // アンカー移動が無効になるプレイヤーとアンカーの位置
+	[SerializeField] float intervalTime_ 		= 0.2f;
+	[SerializeField] Image reticle_;
+	[SerializeField] Sprite availableReticleSprite_;
 
 	GameObject currentAnchor_	= null;
 	Transform anchorPoint_      = null;
@@ -18,13 +21,16 @@ public class PlayerAnchor : MonoBehaviour {
 	PlayerMovement playerMovement_;
 	Collider playerCollider_;
 	float timer_;
+	AvailableAnchorReticle availableAnchorReticle_;
 	
 	
 	void Awake() {
-		playerMovement_     = GetComponent<PlayerMovement>();
-		playerRigidbody_    = GetComponent<Rigidbody>();
-		playerCollider_     = GetComponent<Collider>();
-		timer_				= intervalTime_;
+		playerMovement_     	= GetComponent<PlayerMovement>();
+		playerRigidbody_    	= GetComponent<Rigidbody>();
+		playerCollider_     	= GetComponent<Collider>();
+		timer_					= intervalTime_;
+
+		availableAnchorReticle_ = new AvailableAnchorReticle (reticle_, availableReticleSprite_ ,reticle_.sprite);
 	}
 	
 	// Update is called once per frame
@@ -35,7 +41,9 @@ public class PlayerAnchor : MonoBehaviour {
 			timer_ = intervalTime_;
 		}
 
-		// 右クリックでアンカーをfirePoint_めがけて射出
+		availableAnchorReticle_.Update (firePoint_.position, targetPoint_.position);
+
+		// 右クリックでアンカーをtargetPoint_めがけて射出
 		if (timer_ >= intervalTime_ && currentAnchor_ == null && Input.GetButton("Fire2")) {
 			Shot();
 		}

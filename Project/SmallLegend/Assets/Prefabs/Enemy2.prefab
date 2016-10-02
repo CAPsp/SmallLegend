@@ -781,7 +781,7 @@ MonoBehaviour:
     type: 2}
   speed_: 20
   shotPoint_: {fileID: 4000011941700230}
-  intervalTime_: 1
+  intervalTime_: 1.5
 --- !u!136 &136000012661699972
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -4,7 +4,8 @@ using Utility;
 
 public class Anchor : MonoBehaviour {
 
-	[SerializeField] float limitAnchorLength_ 	= 20f;
+	public static float limitAnchorLength_ 	= 20f;
+
 	[SerializeField] float disableLength_		= 2f;			// 戻ってきた後に消える判定をする最大距離範囲
 	[SerializeField] AudioClip audioHitClip_;
 
@@ -63,7 +64,7 @@ public class Anchor : MonoBehaviour {
     // 何かにぶつかったら飛びつける場所か判断してその場所を通知
     void OnCollisionEnter(Collision other) {
 
-        GameObject parent = FindParent(other.gameObject);
+		GameObject parent = HierarchyUtil.FindParent(other.gameObject);
 
         switch (parent.tag) {
 
@@ -76,19 +77,6 @@ public class Anchor : MonoBehaviour {
 
         }
 
-
-    }
-
-    // 一番親のオブジェクトのタグを持ってくる
-    GameObject FindParent(GameObject child) {
-
-        if(child.transform.parent == null) {
-            return child;
-        }
-        else {
-            return FindParent(child.transform.parent.gameObject);
-        }
-        
     }
 
 }

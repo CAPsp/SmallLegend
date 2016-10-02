@@ -2224,6 +2224,17 @@ Prefab:
       propertyPath: speed_
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011315332712, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: availableReticleSprite_
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ab463d2df8354de290e4f101fd25cef,
+        type: 3}
+    - target: {fileID: 114000011315332712, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: reticle_
+      value: 
+      objectReference: {fileID: 1278767550}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
   m_IsPrefabParent: 0

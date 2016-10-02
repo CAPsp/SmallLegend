@@ -15,7 +15,7 @@ public class Goal : MonoBehaviour {
 	Camera mainCamera_;
 	GameObject playerObject_;
 	bool isClear_ = false;
-	Vector3 goalPosition_;	// プレイヤーがゴールしたときの座標
+	float goalX_, goalZ_;	// プレイヤーがゴールしたときの座標x, z
 
 	void Awake(){
 		pivotTransform_	= cameraRigTransform_.GetChild (0);
@@ -27,8 +27,8 @@ public class Goal : MonoBehaviour {
 
 		if (isClear_) {
 
-			// プレイヤーはゴールした位置から動かないようにする
-			playerObject_.transform.position = goalPosition_;
+			// プレイヤーが x, z軸上を移動しないように修正
+			playerObject_.transform.position = new Vector3(goalX_, playerObject_.transform.position.y, goalZ_);
 
 			if (clearUIobject_.activeInHierarchy) {
 				return;
@@ -52,7 +52,9 @@ public class Goal : MonoBehaviour {
 	// クリア時の初期化処理
 	void ReadyClearEffect(){
 
-		goalPosition_ = playerObject_.transform.position;
+		Vector3 goalPos = playerObject_.transform.position;
+		goalX_ = goalPos.x;
+		goalZ_ = goalPos.z;
 
 		// ユーザからの入力初期化
 		Input.ResetInputAxes ();
@@ -102,7 +104,7 @@ public class Goal : MonoBehaviour {
 				audioBGM_.Stop ();
 			}
 
-			isEnd = false;;
+			isEnd = false;
 		}
 
 		// カメラをPlayerの前に持ってくる処理
