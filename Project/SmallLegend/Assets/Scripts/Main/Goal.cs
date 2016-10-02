@@ -15,6 +15,7 @@ public class Goal : MonoBehaviour {
 	Camera mainCamera_;
 	GameObject playerObject_;
 	bool isClear_ = false;
+	Vector3 goalPosition_;	// プレイヤーがゴールしたときの座標
 
 	void Awake(){
 		pivotTransform_	= cameraRigTransform_.GetChild (0);
@@ -24,13 +25,15 @@ public class Goal : MonoBehaviour {
 
 	void Update(){
 
-		if (clearUIobject_.activeInHierarchy) {
-			return;
-		}
-
 		if (isClear_) {
 
-			if (ClearEffect ()) {
+			// プレイヤーはゴールした位置から動かないようにする
+			playerObject_.transform.position = goalPosition_;
+
+			if (clearUIobject_.activeInHierarchy) {
+				return;
+			}
+			else if (ClearEffect ()) {
 				clearUIobject_.SetActive (true);
 			}
 
@@ -48,7 +51,9 @@ public class Goal : MonoBehaviour {
 
 	// クリア時の初期化処理
 	void ReadyClearEffect(){
-		
+
+		goalPosition_ = playerObject_.transform.position;
+
 		// ユーザからの入力初期化
 		Input.ResetInputAxes ();
 
@@ -110,7 +115,6 @@ public class Goal : MonoBehaviour {
 
 			isEnd = false;
 		}
-
 
 		return isEnd;
 	}

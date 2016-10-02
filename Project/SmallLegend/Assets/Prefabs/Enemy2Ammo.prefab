@@ -23,6 +23,7 @@ GameObject:
   - 135: {fileID: 135000013396276328}
   - 23: {fileID: 23000013885415900}
   - 54: {fileID: 54000011357795724}
+  - 114: {fileID: 114000013359792052}
   m_Layer: 0
   m_Name: Enemy2Ammo
   m_TagString: Untagged
@@ -94,6 +95,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &114000013359792052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011106447278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8daa0347605f44845ae2aa5915f02537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endTime_: 2
 --- !u!135 &135000013396276328
 SphereCollider:
   m_ObjectHideFlags: 1
