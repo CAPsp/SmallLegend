@@ -61,8 +61,12 @@ public class EnemyHealth : MonoBehaviour {
 
 	void Death(){
 
-		GetComponent<EnemyMovement> ().enabled 	= false;
 		GetComponent<Collider> ().enabled 		= false;
+
+		EnemyMovement movement = GetComponent<EnemyMovement> ();
+		if (movement != null) {
+			movement.enabled = false;
+		}
 
 		if (hitSE_.isPlaying) {
 			return;

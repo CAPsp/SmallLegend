@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] float speed_ = 6.00f;
     [SerializeField] Transform playerRayTransform_;     // 地面設置判定のためのRayを飛ばす体の位置
     [SerializeField] float rayRange_;
-	[SerializeField]AudioClip audioJumpClip_;
-	[SerializeField]AudioClip audioLandingClip_;
+	[SerializeField] AudioClip audioJumpClip_;
+	[SerializeField] AudioClip audioLandingClip_;
+	[SerializeField] float jumpIntervalTime_ = 0.7f;
 
     Transform cameraTransform_;
     float cameraAngleOffsetY;   // 初期のカメラのY軸回転角を保存
@@ -17,8 +18,10 @@ public class PlayerMovement : MonoBehaviour {
     Vector3 velocity_;
 	AudioSource audioSource_;
     Animator playerAnimator;
+	float timer_;
 
     void Awake() {
+		
         cameraTransform_    = GameObject.FindGameObjectWithTag("MainCamera").transform;
         cameraAngleOffsetY  = cameraTransform_.rotation.eulerAngles.y;
 
@@ -28,9 +31,16 @@ public class PlayerMovement : MonoBehaviour {
 
 		audioSource_ 	= GetComponent<AudioSource> ();
 		playerAnimator 	= GetComponent<Animator> ();
+
+		timer_ = jumpIntervalTime_;
     }
 
 	void FixedUpdate() {
+
+		if (timer_ <= jumpIntervalTime_) {
+			timer_ += Time.deltaTime;
+		}
+
         float h = Input.GetAxis("Horizontal");
         float w = Input.GetAxis("Vertical");
 
@@ -49,9 +59,10 @@ public class PlayerMovement : MonoBehaviour {
         if (isGround_) {
             velocity_ = Vector3.zero;
 
-            if (Input.GetButton("Jump")) {
+			if (timer_ > jumpIntervalTime_ && Input.GetButton("Jump")) {
 				AudioUtil.PlayFromClips (audioSource_, audioJumpClip_);
-                velocity_.y = Physics.gravity.y * (-1.0f);   
+                velocity_.y = Physics.gravity.y * (-1.0f);
+				timer_ 		= 0f;
             }
 
         }
