@@ -97,12 +97,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013223375004}
   - 54: {fileID: 54000012896731022}
-  - 135: {fileID: 135000012812425028}
   - 195: {fileID: 195000012536914746}
   - 114: {fileID: 114000010190900294}
   - 114: {fileID: 114000014268268264}
   - 114: {fileID: 114000014147618096}
   - 82: {fileID: 82000010985475456}
+  - 136: {fileID: 136000011098098898}
   m_Layer: 8
   m_Name: Enemy1
   m_TagString: Enemy
@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013630938324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22, y: 3, z: 15}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -212,10 +212,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010311866590}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_Children:
   - {fileID: 4000010560656984}
   - {fileID: 4000011098164194}
@@ -387,8 +387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchDistance_: 10
---- !u!135 &135000012812425028
-SphereCollider:
+--- !u!136 &136000011098098898
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -396,9 +396,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 1.3
+  m_Direction: 0
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!195 &195000012536914746
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -416,6 +417,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.9
-  m_BaseOffset: 0.4
+  m_BaseOffset: 0.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

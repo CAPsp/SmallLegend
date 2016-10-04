@@ -90,7 +90,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: 0.16666667
     manualCellSize: 0
-  m_NavMeshData: {fileID: 23800000, guid: 368ea08449f1a471cb022eb955f84f6c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 41f18bd69f92d4ce8a797f2272ca9826, type: 2}
 --- !u!1 &132663943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,14 +1160,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1000013630938324, guid: a3cc44d3909ff7341adda424b9d2436e, type: 2}
-      propertyPath: m_Name
-      value: Enemy1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010577308248, guid: a3cc44d3909ff7341adda424b9d2436e, type: 2}
-      propertyPath: m_Name
-      value: Model
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3cc44d3909ff7341adda424b9d2436e, type: 2}
   m_IsPrefabParent: 0
@@ -1442,17 +1434,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4000011638070996, guid: 2aa7ccbe1097144d09ae7d49bafbd2e4, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011638070996, guid: 2aa7ccbe1097144d09ae7d49bafbd2e4, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011638070996, guid: 2aa7ccbe1097144d09ae7d49bafbd2e4, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 10
+    - target: {fileID: 1000013630938324, guid: 2aa7ccbe1097144d09ae7d49bafbd2e4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2aa7ccbe1097144d09ae7d49bafbd2e4, type: 2}
