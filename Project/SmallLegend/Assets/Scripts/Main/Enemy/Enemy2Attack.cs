@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Enemy2Attack : MonoBehaviour {
 
-    [SerializeField] float searchDistance_ = 15f;
+    [SerializeField] float searchDistance_ = 15f;       // 索敵範囲
+    [SerializeField] float handsUpDistance_ = 2.5f;     // お手上げになる範囲(2Dマリオのパックンみたいな)
     [SerializeField] GameObject prefabAmmo_;
     [SerializeField] float speed_ = 20f;
     [SerializeField] Transform shotPoint_;
@@ -21,7 +22,8 @@ public class Enemy2Attack : MonoBehaviour {
 
         timer_ += (timer_ < intervalTime_) ? Time.deltaTime : 0f;
 
-        if (DistanceFromPlayer() < searchDistance_) {
+        float distance = DistanceFromPlayer();
+        if (distance < searchDistance_ && handsUpDistance_ < distance) {
 
             Rotation();
 

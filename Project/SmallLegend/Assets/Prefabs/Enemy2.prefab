@@ -777,6 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchDistance_: 15
+  handsUpDistance_: 2.5
   prefabAmmo_: {fileID: 1000011106447278, guid: 0877352ebd54c41ec9c0fa365f60a2d5,
     type: 2}
   speed_: 20

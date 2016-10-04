@@ -3,19 +3,25 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour {
 
-    public int health_;
-	public Material defaultMeshMaterial_;
-	public Material damageMeshMaterial_;
-	public float damageEffectTime_	= 0.5f;
+    [SerializeField] int health_;
+	[SerializeField] Material damageMeshMaterial_;
+	[SerializeField] float damageEffectTime_	= 0.5f;
 
 	AudioSource hitSE_;
 	MeshRenderer[] modelMeshes_;
-	float timer_ = 0f;
+    Material[] defaultMeshMaterials_;
+    float timer_ = 0f;
 
 
 	void Awake(){
 		hitSE_ 			= GetComponent<AudioSource> ();
 		modelMeshes_ 	= gameObject.GetComponentsInChildren<MeshRenderer> ();
+
+        // メッシュごとに割り当てられてるテクスチャを保存
+        defaultMeshMaterials_ = new Material[modelMeshes_.Length];
+        for(int i = 0; i < modelMeshes_.Length; i++) {
+            defaultMeshMaterials_[i] = modelMeshes_[i].material;
+        }
 	}
 
     void OnCollisionEnter(Collision other) {
@@ -36,7 +42,7 @@ public class EnemyHealth : MonoBehaviour {
 			timer_ += Time.deltaTime;
 
 			if (timer_ >= damageEffectTime_) {
-				//MeshesChange (defaultMeshMaterial_);
+				MeshesChange (null);
 			}
 		}
 
@@ -76,7 +82,17 @@ public class EnemyHealth : MonoBehaviour {
 
 	}
 
+    // nullが引数に入ったらデフォルトのメッシュに戻す
 	void MeshesChange(Material toMesh){
+
+        if(toMesh == null) {
+            
+            for(int i = 0; i < modelMeshes_.Length; i++) {
+                modelMeshes_[i].material = defaultMeshMaterials_[i];
+            }
+
+            return;
+        }
 
 		for (int i = 0; i < modelMeshes_.Length; i++) {
 			modelMeshes_ [i].material = toMesh;
