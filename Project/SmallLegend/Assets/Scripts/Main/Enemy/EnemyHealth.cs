@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour {
 			timer_ += Time.deltaTime;
 
 			if (timer_ >= damageEffectTime_) {
-				MeshesChange (defaultMeshMaterial_);
+				//MeshesChange (defaultMeshMaterial_);
 			}
 		}
 
