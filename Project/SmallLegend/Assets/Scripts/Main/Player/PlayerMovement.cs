@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour {
     Animator playerAnimator;
 	float timer_;
 
+    // 入力を一時的に格納する
+    float keyH_, keyW_;
+    bool keyJump_;
+
     void Awake() {
 		
         cameraTransform_    = GameObject.FindGameObjectWithTag("MainCamera").transform;
@@ -33,18 +37,24 @@ public class PlayerMovement : MonoBehaviour {
 		playerAnimator 	= GetComponent<Animator> ();
 
 		timer_ = jumpIntervalTime_;
+        ClearInput();
     }
 
+    // 入力受付
+    void Update() {
+        keyH_       = Input.GetAxis("Horizontal");
+        keyW_       = Input.GetAxis("Vertical");
+        keyJump_    = Input.GetButton("Jump");
+    }
+
+    // 動きを反映
 	void FixedUpdate() {
 
 		if (timer_ <= jumpIntervalTime_) {
 			timer_ += Time.deltaTime;
 		}
 
-        float h = Input.GetAxis("Horizontal");
-        float w = Input.GetAxis("Vertical");
-
-        Move(h, w);
+        Move(keyH_, keyW_);
         Turning();
 
 		bool tmp = isGround_;
@@ -59,7 +69,7 @@ public class PlayerMovement : MonoBehaviour {
         if (isGround_) {
             velocity_ = Vector3.zero;
 
-			if (timer_ > jumpIntervalTime_ && Input.GetButton("Jump")) {
+			if (timer_ > jumpIntervalTime_ && keyJump_) {
 				AudioUtil.PlayFromClips (audioSource_, audioJumpClip_);
                 velocity_.y = Physics.gravity.y * (-1.0f);
 				timer_ 		= 0f;
@@ -72,6 +82,8 @@ public class PlayerMovement : MonoBehaviour {
 
         // 重力もしくはジャンプで計算した速度からプレイヤーの位置を調整
         playerRigidbody_.MovePosition(playerRigidbody_.position + velocity_ * Time.deltaTime);
+
+        ClearInput();
     }
 
 
@@ -81,7 +93,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 worldMove = new Vector3(h, 0.0f, w);
 
         //アニメーション
-        if (w != 0)
+        if (h != 0f || w != 0f)
         {
             playerAnimator.SetBool("Walk",true);
         }
@@ -122,6 +134,12 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         return false;
+    }
+
+    void ClearInput() {
+        keyH_ = 0f;
+        keyW_ = 0f;
+        keyJump_ = false;
     }
 
 }

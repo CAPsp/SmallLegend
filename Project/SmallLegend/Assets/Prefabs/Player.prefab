@@ -895,7 +895,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!82 &82000010923218902
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1149,11 +1149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71b73ebed9a1a24480dfa723ad57e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed_: 6
+  speed_: 5
   playerRayTransform_: {fileID: 4000013006986152}
   rayRange_: 0.6
   audioJumpClip_: {fileID: 8300000, guid: 83ee5a3812aad40a2ac127e814c11521, type: 3}
   audioLandingClip_: {fileID: 8300000, guid: 8abc32a42f7d0458487c2d1623a40a5a, type: 3}
+  jumpIntervalTime_: 0.7
 --- !u!114 &114000011315332712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1172,6 +1173,9 @@ MonoBehaviour:
   moveVelocity_: 50
   invalidDistance_: 3
   intervalTime_: 0.5
+  reticle_: {fileID: 0}
+  availableReticleSprite_: {fileID: 21300000, guid: 6ab463d2df8354de290e4f101fd25cef,
+    type: 3}
 --- !u!114 &114000012812894232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1281,4 +1285,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.6
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -109,7 +109,8 @@ public class PlayerAnchor : MonoBehaviour {
 		}catch(MissingReferenceException){	// anchorPointがnullになるときがあったので例外処理追加
 			Debug.Log("(´∀｀)＜ぬるぽ");
 			isMoving_ = false;
-		}
+            playerMovement_.enabled = true;
+        }
 	
 	}
 	
