@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	AudioSource audioSource_;
     Animator playerAnimator;
 	float timer_;
+	bool isCollided_ = true;
 
     // 入力を一時的に格納する
     float keyH_, keyW_;
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour {
         keyJump_    = Input.GetButton("Jump");
     }
 
-    // 動きを反映
+	// 動きを反映(Rigidbody)
 	void FixedUpdate() {
 
 		if (timer_ <= jumpIntervalTime_) {
@@ -67,7 +68,13 @@ public class PlayerMovement : MonoBehaviour {
 
         // 接地してる:ジャンプ可能　設置してない：重力付加
         if (isGround_) {
-            velocity_ = Vector3.zero;
+
+			velocity_ = Vector3.zero;
+
+			// Colliderが反応していなかったら少し重力を付加
+			if (!isCollided_) {
+				velocity_.y = -0.1f;
+			}
 
 			if (timer_ > jumpIntervalTime_ && keyJump_) {
 				AudioUtil.PlayFromClips (audioSource_, audioJumpClip_);
@@ -129,7 +136,6 @@ public class PlayerMovement : MonoBehaviour {
 
 		RaycastHit hitCollider;
 		if (Physics.Linecast(playerRayTransform_.position, (playerRayTransform_.position - transform.up * rayRange_), out hitCollider)) {
-			
 			return !hitCollider.collider.isTrigger;
         }
 
@@ -141,5 +147,13 @@ public class PlayerMovement : MonoBehaviour {
         keyW_ = 0f;
         keyJump_ = false;
     }
+
+	// 地面にColliderが接地しているかの判定をとるための処理
+	void OnCollisionStay(Collision other){
+		isCollided_ = !(other.collider.isTrigger);
+	}
+	void OnCollisionExit(Collision other){
+		isCollided_ = false;
+	}
 
 }

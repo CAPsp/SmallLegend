@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000012287390430}
   - 65: {fileID: 65000013175191020}
   - 23: {fileID: 23000011400257504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoalArea
   m_TagString: Goal
   m_Icon: {fileID: 0}

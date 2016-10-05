@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f908ecb0e22b44e1ac07a846a3108dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName_: Stage1
+  nextSceneName_: Tutorial
   displayImage_: {fileID: 1889863596}
   darckChangeSpeed_: 0.5
 --- !u!1 &1996721480
