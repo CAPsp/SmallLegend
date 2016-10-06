@@ -102,4 +102,11 @@ public class Bow : MonoBehaviour {
 		chargeCircleImage_.rectTransform.sizeDelta = initCircleSize_;
 	}
 
+	// 武器切替時
+	void OnDisable(){
+		if (chargeCircleImage_.enabled) {
+			Shot ();
+		}
+	}
+
 }
