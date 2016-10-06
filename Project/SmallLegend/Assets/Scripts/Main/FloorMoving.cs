@@ -65,12 +65,12 @@ public class FloorMoving : MonoBehaviour {
     // 元の位置に戻る
     void OnCollisionExit(Collision other) {
 
-		if (oneWay_) {
-			return;
-		}
-
         if (other.gameObject.tag == "Player") {
             collisionObjTransform_ = null;
+
+			if (oneWay_) {
+				return;
+			}
 
             if (inverse_) {
                 moveDistance_ -= originMoveDistance_;

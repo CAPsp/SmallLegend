@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			// Colliderが反応していなかったら少し重力を付加
 			if (!isCollided_) {
-				velocity_.y = -0.1f;
+				velocity_.y = -1f;
 			}
 
 			if (timer_ > jumpIntervalTime_ && keyJump_) {
