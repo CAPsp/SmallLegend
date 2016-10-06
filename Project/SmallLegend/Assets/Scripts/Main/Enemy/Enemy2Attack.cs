@@ -15,7 +15,7 @@ public class Enemy2Attack : MonoBehaviour {
 
     void Awake() {
         player_ = GameObject.FindGameObjectWithTag("Player");
-        timer_ = intervalTime_;
+        timer_ = 0f;
     }
 
     void Update() {

@@ -36,7 +36,9 @@ public class FloorMoving : MonoBehaviour {
         // リフトとそれに乗っているオブジェクトを移動
         transform.position += distance;
         if(collisionObjTransform_ != null) {
-            collisionObjTransform_.position += distance;
+			NortificationToOtherObj (collisionObjTransform_.gameObject, distance);
+
+            //collisionObjTransform_.position += distance;
         }
 
         moveDistance_ -= distance;
@@ -47,6 +49,18 @@ public class FloorMoving : MonoBehaviour {
         }
 
     }
+
+	void NortificationToOtherObj(GameObject other, Vector3 distance){
+
+		// プレイヤーと他オブジェクトで処理を分ける
+		if (other.tag != "Player") {
+			other.transform.position += distance;
+		}
+		else {
+			other.GetComponent<PlayerMovement> ().ReceiveInertia (gameObject, distance);
+		}
+
+	}
 
     void OnCollisionEnter(Collision other) {
 
@@ -65,12 +79,16 @@ public class FloorMoving : MonoBehaviour {
     // 元の位置に戻る
     void OnCollisionExit(Collision other) {
 
+		if (oneWay_) {
+			return;
+		}
+
         if (other.gameObject.tag == "Player") {
             collisionObjTransform_ = null;
 
-			if (oneWay_) {
-				return;
-			}
+//			if (oneWay_) {
+//				return;
+//			}
 
             if (inverse_) {
                 moveDistance_ -= originMoveDistance_;

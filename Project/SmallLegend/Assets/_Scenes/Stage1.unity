@@ -2771,7 +2771,7 @@ GameObject:
   - 114: {fileID: 822673996}
   m_Layer: 8
   m_Name: MoveFloor
-  m_TagString: Untagged
+  m_TagString: Mover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -2802,6 +2802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance_: {x: 0, y: 15.5, z: 0}
   speed_: 4
+  oneWay_: 0
 --- !u!23 &822673997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3277,7 +3278,7 @@ GameObject:
   - 114: {fileID: 989231525}
   m_Layer: 8
   m_Name: MoveFloorToGoal
-  m_TagString: Untagged
+  m_TagString: Mover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -3308,6 +3309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance_: {x: 0, y: 0, z: -192}
   speed_: 10
+  oneWay_: 1
 --- !u!23 &989231526
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4090,7 +4092,7 @@ GameObject:
   - 114: {fileID: 1192533609}
   m_Layer: 8
   m_Name: MoveFloor
-  m_TagString: Untagged
+  m_TagString: Mover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -4169,6 +4171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance_: {x: 0, y: 9, z: 0}
   speed_: 3
+  oneWay_: 0
 --- !u!4 &1229762360 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000013223375004, guid: a3cc44d3909ff7341adda424b9d2436e,

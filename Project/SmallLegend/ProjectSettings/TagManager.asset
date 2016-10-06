@@ -11,6 +11,7 @@ TagManager:
   - Goal
   - Weapon
   - UIWeapon
+  - Mover
   layers:
   - Default
   - TransparentFX

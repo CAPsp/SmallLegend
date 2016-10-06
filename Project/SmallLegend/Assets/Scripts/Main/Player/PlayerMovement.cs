@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     Animator playerAnimator;
 	float timer_;
 	bool isCollided_ = true;
+	GameObject currentCollideObj_ = null;	// 現在接しているObj
 
     // 入力を一時的に格納する
     float keyH_, keyW_;
@@ -148,9 +149,37 @@ public class PlayerMovement : MonoBehaviour {
         keyJump_ = false;
     }
 
+	// 慣性が働く場合、その通知を受け取るメソッド
+	public void ReceiveInertia(GameObject sender, Vector3 distance){
+
+		GameObject moverObj = FindMoverFromParents(currentCollideObj_);
+
+		if (sender == moverObj) {
+			transform.position += distance;
+		}
+
+	}
+
+	// 親を辿っていって"Mover"タグを持つObjectが存在したらそれを返し、なかったらnullを返す
+	GameObject FindMoverFromParents(GameObject obj){
+
+		if (obj == null) {
+			return null;
+		}
+
+		if (obj.tag == "Mover") {
+			return obj;
+		}
+		else{
+			return (obj.transform.parent == null) ? null : FindMoverFromParents(obj.transform.parent.gameObject);
+		}
+
+	}
+
 	// 地面にColliderが接地しているかの判定をとるための処理
 	void OnCollisionStay(Collision other){
 		isCollided_ = !(other.collider.isTrigger);
+		currentCollideObj_ = other.collider.gameObject;
 	}
 	void OnCollisionExit(Collision other){
 		isCollided_ = false;
