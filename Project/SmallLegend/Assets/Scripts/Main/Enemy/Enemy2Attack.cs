@@ -20,17 +20,20 @@ public class Enemy2Attack : MonoBehaviour {
 
     void Update() {
 
-        timer_ += (timer_ < intervalTime_) ? Time.deltaTime : 0f;
-
         float distance = DistanceFromPlayer();
-        if (distance < searchDistance_ && handsUpDistance_ < distance) {
+		if (distance < searchDistance_ && handsUpDistance_ < distance) {
 
-            Rotation();
+			timer_ += Time.deltaTime;
 
-            if (timer_ >= intervalTime_) {
-                Shot();
-            }
-        }
+			Rotation ();
+
+			if (timer_ >= intervalTime_) {
+				Shot ();
+			}
+		}
+		else {
+			timer_ = 0f;
+		}
 
     }
 

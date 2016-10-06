@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f908ecb0e22b44e1ac07a846a3108dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName_: Stage1
+  nextSceneName_: Stage2
   displayImage_: {fileID: 114000013511981848}
   darckChangeSpeed_: 1
 --- !u!114 &114000012204089226
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7212e6f38c3394087b87ae70b93ca358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitTimeSecond_: 100
+  limitTimeSecond_: 200
   playerHealth_: {fileID: 0}
 --- !u!114 &114000014189026890
 MonoBehaviour:
@@ -1240,7 +1240,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000012593714948
 RectTransform:

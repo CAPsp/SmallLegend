@@ -4750,16 +4750,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011315332712, guid: 2ae38c03fe4237f4f94e256e366749d3,
+    - target: {fileID: 114000012812894232, guid: 2ae38c03fe4237f4f94e256e366749d3,
         type: 2}
       propertyPath: targetPoint_
       value: 
       objectReference: {fileID: 1952275106}
-    - target: {fileID: 114000011315332712, guid: 2ae38c03fe4237f4f94e256e366749d3,
-        type: 2}
-      propertyPath: reticle_
-      value: 
-      objectReference: {fileID: 1278767550}
     - target: {fileID: 114000013294343192, guid: 2ae38c03fe4237f4f94e256e366749d3,
         type: 2}
       propertyPath: targetPoint_
@@ -4770,11 +4765,16 @@ Prefab:
       propertyPath: chargeCircleImage_
       value: 
       objectReference: {fileID: 1024607587}
-    - target: {fileID: 114000012812894232, guid: 2ae38c03fe4237f4f94e256e366749d3,
+    - target: {fileID: 114000011315332712, guid: 2ae38c03fe4237f4f94e256e366749d3,
         type: 2}
       propertyPath: targetPoint_
       value: 
       objectReference: {fileID: 1952275106}
+    - target: {fileID: 114000011315332712, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: reticle_
+      value: 
+      objectReference: {fileID: 1278767550}
     - target: {fileID: 114000013735627368, guid: 2ae38c03fe4237f4f94e256e366749d3,
         type: 2}
       propertyPath: heartUI_
@@ -4795,16 +4795,6 @@ Prefab:
       propertyPath: audioBGM_
       value: 
       objectReference: {fileID: 1144015592}
-    - target: {fileID: 135000010317029254, guid: 2ae38c03fe4237f4f94e256e366749d3,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 135000010317029254, guid: 2ae38c03fe4237f4f94e256e366749d3,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
   m_IsPrefabParent: 0
@@ -6027,16 +6017,6 @@ Prefab:
       propertyPath: playerHealth_
       value: 
       objectReference: {fileID: 1469331055}
-    - target: {fileID: 114000013671264994, guid: 9af4f6ece6adc4096830c3594025c3a2,
-        type: 2}
-      propertyPath: limitTimeSecond_
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012105624020, guid: 9af4f6ece6adc4096830c3594025c3a2,
-        type: 2}
-      propertyPath: nextSceneName_
-      value: Stage2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4f6ece6adc4096830c3594025c3a2, type: 2}
   m_IsPrefabParent: 0

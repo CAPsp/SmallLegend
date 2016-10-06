@@ -1209,11 +1209,11 @@ MonoBehaviour:
   targetPoint_: {fileID: 0}
   idleTime_: 0.5
   chargeCircleImage_: {fileID: 0}
-  chargeEndTimeAmount_: 2
-  maxVelocity_: 200
-  minVelocity_: 25
+  chargeEndTimeAmount_: 1.5
+  maxVelocity_: 100
+  minVelocity_: 20
   maxDamage_: 100
-  minDamage_: 20
+  minDamage_: 50
 --- !u!114 &114000013735627368
 MonoBehaviour:
   m_ObjectHideFlags: 1
