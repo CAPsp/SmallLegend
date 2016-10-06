@@ -104,7 +104,7 @@ public class Bow : MonoBehaviour {
 
 	// 武器切替時
 	void OnDisable(){
-		if (chargeCircleImage_.enabled) {
+		if (chargeCircleImage_ != null && chargeCircleImage_.enabled) {
 			Shot ();
 		}
 	}

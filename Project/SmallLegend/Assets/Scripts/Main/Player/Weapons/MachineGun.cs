@@ -78,6 +78,7 @@ public class MachineGun : MonoBehaviour {
 
 	}
 
+	// 武器切替時
 	void OnDisable(){
 		fireLineRenderer_.enabled = false;
 	}

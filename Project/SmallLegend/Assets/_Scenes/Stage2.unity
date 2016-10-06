@@ -1295,7 +1295,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 110042b9ad37a4410af31d393c82e117, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1881,6 +1881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance_: {x: 0, y: 0, z: 38}
   speed_: 5
+  oneWay_: 0
 --- !u!23 &568501318
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2287,7 +2288,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 110042b9ad37a4410af31d393c82e117, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -3991,7 +3992,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 110042b9ad37a4410af31d393c82e117, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -5234,7 +5235,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 14e71aa335370e443b026d889233dbb1, type: 2}
+  - {fileID: 2100000, guid: c0b5c71e3a2db48c38dd1ef6d5f13082, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -6275,7 +6276,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 110042b9ad37a4410af31d393c82e117, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -7792,7 +7793,7 @@ Prefab:
     - target: {fileID: 114000012105624020, guid: 9af4f6ece6adc4096830c3594025c3a2,
         type: 2}
       propertyPath: nextSceneName_
-      value: Stage2
+      value: Stage3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4f6ece6adc4096830c3594025c3a2, type: 2}

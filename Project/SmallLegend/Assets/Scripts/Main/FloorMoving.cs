@@ -6,8 +6,9 @@ public class FloorMoving : MonoBehaviour {
 
     [SerializeField] Vector3 moveDistance_;
     [SerializeField] float speed_;
+	[SerializeField] bool oneWay_ = false;	// trueにすると一方通行になる 
 
-    Transform collisionObjTransform_;     // リフトの移動に合わせて移動するため必要
+    Transform collisionObjTransform_;     	// リフトの移動に合わせて移動するため必要
     bool isMoving_  = false;
     bool inverse_   = false;
     Vector3 originMoveDistance_;
@@ -63,6 +64,10 @@ public class FloorMoving : MonoBehaviour {
 
     // 元の位置に戻る
     void OnCollisionExit(Collision other) {
+
+		if (oneWay_) {
+			return;
+		}
 
         if (other.gameObject.tag == "Player") {
             collisionObjTransform_ = null;
