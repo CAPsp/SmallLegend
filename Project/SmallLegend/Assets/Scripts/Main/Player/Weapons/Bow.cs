@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Utility;
 
 public class Bow : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class Bow : MonoBehaviour {
     public int maxDamage_               = 100;
     public int minDamage_               = 20;
 
+
     float velocity_;
 	int damage_;
 	float idleTimer_	= 0f;
@@ -22,11 +24,12 @@ public class Bow : MonoBehaviour {
 
 	Vector2 initCircleSize_;	// 初期のチャージを表す円の座標
 	AudioSource seConcentrate_;
+	SphereCollider playerSphereCollider_;
 
 	void Awake(){
 		initCircleSize_ = chargeCircleImage_.rectTransform.sizeDelta;
-
-		seConcentrate_ = GetComponent<AudioSource> ();
+		seConcentrate_ 	= GetComponent<AudioSource> ();
+		playerSphereCollider_ = HierarchyUtil.FindParent(gameObject).GetComponent<SphereCollider>();
 	}
 
     void Update() {
@@ -72,11 +75,11 @@ public class Bow : MonoBehaviour {
 
 		// 正規化した発射角度を割り出す
 		Vector3 shotAngle = targetPoint_.position - transform.position;
-		shotAngle = shotAngle.normalized;
+		shotAngle.Normalize();
 
         // プレイヤーと被らない位置に弾を生成
 		GameObject ammo = Instantiate(prefabArrow_, transform.position, Quaternion.identity) as GameObject;
-        ammo.transform.position += shotAngle * ammo.transform.localScale.x;
+		ammo.transform.position += shotAngle * playerSphereCollider_.radius;
 
         // 発射速度を加算
 		ammo.GetComponent<Rigidbody>().velocity = shotAngle * velocity_;
