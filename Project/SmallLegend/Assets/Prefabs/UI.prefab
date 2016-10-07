@@ -606,6 +606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40712e03142c4c09b881b33d85febaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bowSprite_: {fileID: 21300000, guid: a36703053afa64a2e91b3b4123c05fce, type: 3}
+  machinGunSprite_: {fileID: 21300000, guid: a1394aea8d1e04bc7a7f053a2c63403c, type: 3}
 --- !u!114 &114000012105624020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f908ecb0e22b44e1ac07a846a3108dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName_: Stage2
+  nextSceneName_: Stage3
   displayImage_: {fileID: 114000013511981848}
   darckChangeSpeed_: 1
 --- !u!114 &114000012204089226

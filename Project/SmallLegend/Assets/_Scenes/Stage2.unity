@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000001, guid: d111da65610b74a6593c384ef8717a91,
+  m_LightingDataAsset: {fileID: 112000001, guid: f1898b1a22cf04f15b0902f9606f3e46,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -5646,6 +5646,16 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 23000013938248898, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84d570a9498eb4d92bbab3d9832590b5, type: 2}
+    - target: {fileID: 23000010652888684, guid: 2ae38c03fe4237f4f94e256e366749d3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7101c6b802757408bab8bc336171f840, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
   m_IsPrefabParent: 0
@@ -7785,16 +7795,6 @@ Prefab:
       propertyPath: playerHealth_
       value: 
       objectReference: {fileID: 1469331055}
-    - target: {fileID: 114000013671264994, guid: 9af4f6ece6adc4096830c3594025c3a2,
-        type: 2}
-      propertyPath: limitTimeSecond_
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012105624020, guid: 9af4f6ece6adc4096830c3594025c3a2,
-        type: 2}
-      propertyPath: nextSceneName_
-      value: Stage3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4f6ece6adc4096830c3594025c3a2, type: 2}
   m_IsPrefabParent: 0

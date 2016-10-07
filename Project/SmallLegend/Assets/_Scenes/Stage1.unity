@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000001, guid: d111da65610b74a6593c384ef8717a91,
+  m_LightingDataAsset: {fileID: 112000021, guid: d111da65610b74a6593c384ef8717a91,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -6020,6 +6020,11 @@ Prefab:
       propertyPath: playerHealth_
       value: 
       objectReference: {fileID: 1469331055}
+    - target: {fileID: 114000012105624020, guid: 9af4f6ece6adc4096830c3594025c3a2,
+        type: 2}
+      propertyPath: nextSceneName_
+      value: Stage2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4f6ece6adc4096830c3594025c3a2, type: 2}
   m_IsPrefabParent: 0
