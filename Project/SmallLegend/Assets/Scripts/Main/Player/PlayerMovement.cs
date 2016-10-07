@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
         velocity_ = Vector3.zero;
 
 		audioSource_ 	= GetComponent<AudioSource> ();
-		playerAnimator 	= GetComponent<Animator> ();
+		playerAnimator 	= GetComponentInChildren<Animator> ();
 
 		timer_ = jumpIntervalTime_;
         ClearInput();
@@ -47,6 +47,14 @@ public class PlayerMovement : MonoBehaviour {
         keyH_       = Input.GetAxis("Horizontal");
         keyW_       = Input.GetAxis("Vertical");
         keyJump_    = Input.GetButton("Jump");
+
+		//アニメーション
+		if (keyH_ != 0f || keyW_ != 0f){
+			playerAnimator.SetBool("Walk",true);
+		}
+		else{
+			playerAnimator.SetBool("Walk", false);
+		}
     }
 
 	// 動きを反映(Rigidbody)
@@ -99,16 +107,6 @@ public class PlayerMovement : MonoBehaviour {
 
         // ワールド座標時の移動量に置き換え
         Vector3 worldMove = new Vector3(h, 0.0f, w);
-
-        //アニメーション
-        if (h != 0f || w != 0f)
-        {
-            playerAnimator.SetBool("Walk",true);
-        }
-        else
-        {
-            playerAnimator.SetBool("Walk", false);
-        }
 
         // カメラの向きに合わせて移動を決定
         Vector3 movement = cameraTransform_.rotation * worldMove;

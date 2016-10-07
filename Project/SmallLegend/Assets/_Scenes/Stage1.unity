@@ -4778,6 +4778,22 @@ Prefab:
       propertyPath: reticle_
       value: 
       objectReference: {fileID: 1278767550}
+    - target: {fileID: 4000010173941074, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.25324097
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010173941074, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.72715527
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010173941074, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.635685
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010173941074, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.05494328
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013735627368, guid: 2ae38c03fe4237f4f94e256e366749d3,
         type: 2}
       propertyPath: heartUI_
@@ -4798,6 +4814,10 @@ Prefab:
       propertyPath: audioBGM_
       value: 
       objectReference: {fileID: 1144015592}
+    - target: {fileID: 4000013015954456, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ae38c03fe4237f4f94e256e366749d3, type: 2}
   m_IsPrefabParent: 0
