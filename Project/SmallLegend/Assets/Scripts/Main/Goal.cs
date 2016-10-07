@@ -95,6 +95,7 @@ public class Goal : MonoBehaviour {
 		// プレイヤーを操作不能にする
 		playerObject_.GetComponent<PlayerMovement> ().enabled 	= false;
 		playerObject_.GetComponent<PlayerAnchor> ().enabled 	= false;
+		playerObject_.GetComponent<Animator> ().enabled 		= false;
 
 		// BGMをフェードアウトする処理
 		if (audioBGM_.isPlaying) {

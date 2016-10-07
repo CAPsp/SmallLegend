@@ -370,6 +370,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &637185749 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 49a0e923d39ec3c4c8bb97699e2f2903, type: 2}
+  m_PrefabInternal: {fileID: 637185748}
+--- !u!114 &637185750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 637185749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2c1ac5696ac4c228d886f296e38b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &726781187 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000011391257696, guid: 9af4f6ece6adc4096830c3594025c3a2,
@@ -1859,6 +1874,11 @@ Prefab:
         type: 2}
       propertyPath: nextSceneName_
       value: Stage1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013671264994, guid: 9af4f6ece6adc4096830c3594025c3a2,
+        type: 2}
+      propertyPath: limitTimeSecond_
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9af4f6ece6adc4096830c3594025c3a2, type: 2}

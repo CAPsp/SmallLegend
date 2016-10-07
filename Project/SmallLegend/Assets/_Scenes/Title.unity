@@ -42,7 +42,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -71,7 +71,8 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000021, guid: a95147f3d33f94d0b97119abcc8b6c9d,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -669,7 +670,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 101609980}
-  m_LocalRotation: {x: -0.25324097, y: 0.72715527, z: -0.635685, w: 0.054943293}
+  m_LocalRotation: {x: -0.25324097, y: 0.72715527, z: -0.635685, w: 0.054943286}
   m_LocalPosition: {x: -0.000643644, y: 1.4291768e-19, z: -0.027213065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1812,6 +1813,7 @@ GameObject:
   - 124: {fileID: 492248094}
   - 81: {fileID: 492248093}
   - 114: {fileID: 492248098}
+  - 114: {fileID: 492248099}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1906,6 +1908,17 @@ MonoBehaviour:
   - {fileID: 578230958}
   - {fileID: 1157529201}
   - {fileID: 2012642648}
+--- !u!114 &492248099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492248092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2c1ac5696ac4c228d886f296e38b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &498451937
 GameObject:
   m_ObjectHideFlags: 0
